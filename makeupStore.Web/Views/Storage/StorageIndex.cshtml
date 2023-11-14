@@ -1,0 +1,32 @@
+@model IEnumerable<ProductDto>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+<div>
+      @foreach(var item in Model)
+                        {
+                            <tr>
+                                <td> @item.Name
+                                </td>
+                                <td> @((item.Price).ToString("c"))
+                                </td>
+                                <td>
+                                    @item.Category
+                                </td>
+                                <td>
+                                    @item.Description
+                                </td>
+                            </tr>
+                        }
+</div>
+</body>
+</html>

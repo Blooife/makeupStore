@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "g25F9DVvaotAfND9FfQ3FVS0sql8UJRzPY0Rg0PyHco=",
+  "Source": "makeupStore.Services.StorageAPI",
+  "BasePath": "_content/makeupStore.Services.StorageAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

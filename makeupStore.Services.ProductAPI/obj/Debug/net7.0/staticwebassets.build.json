@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "jKxfOohyJf9eDTP+zA/bfv97+6dXtz6gTLeC3Ol4XTI=",
+  "Source": "makeupStore.Services.ProductAPI",
+  "BasePath": "_content/makeupStore.Services.ProductAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
