@@ -1,4 +1,23 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+$(function() {
 
-// Write your JavaScript code.
+    (function quantityProducts() {
+        var $quantityArrowMinus = $(".quantity-arrow-minus");
+        var $quantityArrowPlus = $(".quantity-arrow-plus");
+        var $quantityNum = $(".quantity-num");
+
+        $quantityArrowMinus.click(quantityMinus);
+        $quantityArrowPlus.click(quantityPlus);
+
+        function quantityMinus() {
+            if ($quantityNum.val() > 1) {
+                $quantityNum.val(+$quantityNum.val() - 1);
+            }
+        }
+
+        function quantityPlus() {
+            $quantityNum.val(+$quantityNum.val() + 1);
+        }
+    })();
+
+});

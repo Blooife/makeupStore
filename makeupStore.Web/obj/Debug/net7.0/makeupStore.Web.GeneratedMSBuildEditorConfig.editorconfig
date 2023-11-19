@@ -9,69 +9,77 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = makeupStore.Web
 build_property.RootNamespace = makeupStore.Web
-build_property.ProjectDir = C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Web\
+build_property.ProjectDir = C:\Users\HP\Desktop\makeupStore\makeupStore.Web\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Web
+build_property.MSBuildProjectDirectory = C:\Users\HP\Desktop\makeupStore\makeupStore.Web
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Asus/RiderProjects/makeupStore/makeupStore.Web/Views/Auth/Login.cshtml]
+[C:/Users/HP/Desktop/makeupStore/makeupStore.Web/Views/Auth/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/RiderProjects/makeupStore/makeupStore.Web/Views/Auth/Logout.cshtml]
+[C:/Users/HP/Desktop/makeupStore/makeupStore.Web/Views/Auth/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/RiderProjects/makeupStore/makeupStore.Web/Views/Auth/Register.cshtml]
+[C:/Users/HP/Desktop/makeupStore/makeupStore.Web/Views/Auth/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/RiderProjects/makeupStore/makeupStore.Web/Views/Home/Index.cshtml]
+[C:/Users/HP/Desktop/makeupStore/makeupStore.Web/Views/Cart/CartIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxDYXJ0SW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Desktop/makeupStore/makeupStore.Web/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/RiderProjects/makeupStore/makeupStore.Web/Views/Home/Privacy.cshtml]
+[C:/Users/HP/Desktop/makeupStore/makeupStore.Web/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/RiderProjects/makeupStore/makeupStore.Web/Views/Product/ProductIndex.cshtml]
+[C:/Users/HP/Desktop/makeupStore/makeupStore.Web/Views/Product/ProductDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQcm9kdWN0RGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Desktop/makeupStore/makeupStore.Web/Views/Product/ProductIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQcm9kdWN0SW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/RiderProjects/makeupStore/makeupStore.Web/Views/Shared/Error.cshtml]
+[C:/Users/HP/Desktop/makeupStore/makeupStore.Web/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/RiderProjects/makeupStore/makeupStore.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/HP/Desktop/makeupStore/makeupStore.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/RiderProjects/makeupStore/makeupStore.Web/Views/Storage/StorageCreate.cshtml]
+[C:/Users/HP/Desktop/makeupStore/makeupStore.Web/Views/Storage/StorageCreate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcmFnZVxTdG9yYWdlQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/RiderProjects/makeupStore/makeupStore.Web/Views/Storage/StorageDelete.cshtml]
+[C:/Users/HP/Desktop/makeupStore/makeupStore.Web/Views/Storage/StorageDelete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcmFnZVxTdG9yYWdlRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/RiderProjects/makeupStore/makeupStore.Web/Views/Storage/StorageGetById.cshtml]
+[C:/Users/HP/Desktop/makeupStore/makeupStore.Web/Views/Storage/StorageGetById.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcmFnZVxTdG9yYWdlR2V0QnlJZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/RiderProjects/makeupStore/makeupStore.Web/Views/Storage/StorageIndex.cshtml]
+[C:/Users/HP/Desktop/makeupStore/makeupStore.Web/Views/Storage/StorageIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcmFnZVxTdG9yYWdlSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/RiderProjects/makeupStore/makeupStore.Web/Views/_ViewImports.cshtml]
+[C:/Users/HP/Desktop/makeupStore/makeupStore.Web/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/RiderProjects/makeupStore/makeupStore.Web/Views/_ViewStart.cshtml]
+[C:/Users/HP/Desktop/makeupStore/makeupStore.Web/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/RiderProjects/makeupStore/makeupStore.Web/Views/Shared/_Layout.cshtml]
+[C:/Users/HP/Desktop/makeupStore/makeupStore.Web/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-u5aswod0qi

@@ -24,4 +24,14 @@ public class ProductController : Controller
         }
         return View(list);
     }
+    public async Task<IActionResult> ProductDetails(int productId)
+    {
+        ProductDto? model = new();
+        ResponseDto? response = await _productService.GetProductByIdAsync(productId);
+        if (response != null && response.IsSuccess)
+        {
+            model = JsonConvert.DeserializeObject<ProductDto>(response.Result.ToString());
+        }
+        return View(model);
+    }
 }

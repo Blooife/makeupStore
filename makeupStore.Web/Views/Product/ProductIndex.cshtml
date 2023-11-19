@@ -1,7 +1,7 @@
 @model IEnumerable<ProductDto>?
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -11,22 +11,20 @@
     <title>title</title>
 </head>
 <body>
-<div>
-      @foreach(var item in Model)
-                  {
-                      <tr>
-                          <td> @item.Name
-                          </td>
-                          <td> @((item.Price).ToString("c"))
-                          </td>
-                          <td>
-                              @item.Category
-                          </td>
-                          <td>
-                              @item.Description
-                          </td>
-                      </tr>
-                  }
+<div class = "productIndexContent">
+
+@foreach (var item in Model)
+{
+<div class="productItem">
+    <img src="~/css/1.jpg" height=75px width=75px>
+    <div>
+        <h1>@item.Name</h1>
+        <p>@item.Category</p>
+        <h2>@((item.Price).ToString("c"))</h2>
+        <a class="showDetailsBtn" type="button" asp-action="ProductDetails" asp-route-productId = "@item.ProductId">Learn more</a>
+    </div>
+</div>}
+
 </div>
 </body>
 </html>
