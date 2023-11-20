@@ -116,6 +116,7 @@ public class StorageAPIController : ControllerBase
             {
                 id = id,
             });
+            responseDto.Result = response;
             return Ok(responseDto);
         }
         catch (Exception ex)
