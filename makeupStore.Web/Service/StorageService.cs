@@ -18,7 +18,7 @@ public class StorageService : IStorageService
         return await _baseService.SendAsync(new RequestDto()
         {
             ApiType = SD.ApiType.GET,
-            Url = SD.StorageAPIBase + "/api/StorageAPI"
+            Url = SD.StorageAPIBase + "/api/storageAPI"
         });
     }
 
@@ -27,7 +27,7 @@ public class StorageService : IStorageService
         return await _baseService.SendAsync(new RequestDto()
         {
             ApiType = SD.ApiType.GET,
-            Url = SD.StorageAPIBase + "/api/StorageAPI/" + id
+            Url = SD.StorageAPIBase + "/api/storageAPI/" + id
         });
     }
 
@@ -37,7 +37,7 @@ public class StorageService : IStorageService
         {
             ApiType = SD.ApiType.POST,
             Data=productDto,
-            Url = SD.StorageAPIBase + "/api/StorageAPI" 
+            Url = SD.StorageAPIBase + "/api/storageAPI" 
         });
     }
 
@@ -47,7 +47,7 @@ public class StorageService : IStorageService
         {
             ApiType = SD.ApiType.PUT,
             Data=productDto,
-            Url = SD.StorageAPIBase + "/api/StorageAPI" 
+            Url = SD.StorageAPIBase + "/api/storageAPI" 
         });
     }
 
@@ -56,7 +56,7 @@ public class StorageService : IStorageService
         return await _baseService.SendAsync(new RequestDto()
         {
             ApiType = SD.ApiType.DELETE,
-            Url = SD.StorageAPIBase + "/api/StorageAPI/" + id
+            Url = SD.StorageAPIBase + "/api/storageAPI/" + id
         });
     }
 }

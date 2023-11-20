@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\Desktop\\makeupStore\\makeupStore.Services.CartAPI\\makeupStore.Services.CartAPI.csproj": {}
+    "C:\\Users\\Asus\\RiderProjects\\makeupStore\\makeupStore.Services.CartAPI\\makeupStore.Services.CartAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\Desktop\\makeupStore\\makeupStore.Services.CartAPI\\makeupStore.Services.CartAPI.csproj": {
+    "C:\\Users\\Asus\\RiderProjects\\makeupStore\\makeupStore.Services.CartAPI\\makeupStore.Services.CartAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Desktop\\makeupStore\\makeupStore.Services.CartAPI\\makeupStore.Services.CartAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Asus\\RiderProjects\\makeupStore\\makeupStore.Services.CartAPI\\makeupStore.Services.CartAPI.csproj",
         "projectName": "makeupStore.Services.CartAPI",
-        "projectPath": "C:\\Users\\HP\\Desktop\\makeupStore\\makeupStore.Services.CartAPI\\makeupStore.Services.CartAPI.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Desktop\\makeupStore\\makeupStore.Services.CartAPI\\obj\\",
+        "projectPath": "C:\\Users\\Asus\\RiderProjects\\makeupStore\\makeupStore.Services.CartAPI\\makeupStore.Services.CartAPI.csproj",
+        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Asus\\RiderProjects\\makeupStore\\makeupStore.Services.CartAPI\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
