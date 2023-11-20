@@ -60,7 +60,7 @@ public class StorageController : Controller
         }
         return NotFound();
     }
-
+   
     [HttpPost]
     public async Task<IActionResult> StorageDelete(ProductDto ProductDto)
     {
@@ -76,5 +76,20 @@ public class StorageController : Controller
             TempData["error"] = response?.Message;
         }
         return View(ProductDto);
+    }
+    
+    public async Task<IActionResult> StorageDetails(int productId)
+    {
+        ProductDto? model = new();
+        ResponseDto? response = await _storageService.GetProductByIdAsync(productId);
+        if (response != null && response.IsSuccess)
+        {
+            model = JsonConvert.DeserializeObject<ProductDto>(response.Result.ToString());
+        }
+        else
+        {
+            return NotFound();
+        }
+        return View(model);
     }
 }

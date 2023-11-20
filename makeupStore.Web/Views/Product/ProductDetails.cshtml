@@ -1,0 +1,35 @@
+@using makeupStore.Web.Utility
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model ProductDto
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post">
+    <div class="productDetails">
+        <img src="~/css/1.jpg" height=150px width=150px>
+        <div>
+            <h1>@Model.Name</h1>
+            <p>@Model.Category</p>
+            <h2>@((Model.Price).ToString("c"))</h2>
+            <div class = "cartWrapper">
+                <div class ="counter">
+                    <input type="button" value="-" onclick="val.innerText--"/>
+                    <span id="val">0</span>
+                    <input type="button" value="+" onclick="val.innerText++"/>
+                </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="addBtn" type="button" asp-action="" asp-route-productId = "">Add to cart</a>
+                }
+            </div>
+            <p class ="productDescr">@Model.Description</p>
+            </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
