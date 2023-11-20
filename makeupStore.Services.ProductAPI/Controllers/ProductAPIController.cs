@@ -61,6 +61,24 @@ public class ProductAPIController : ControllerBase
         }
         return response;
     }
+    
+    [HttpGet]
+    [Route("GetByCategory/{category}")]
+    public ResponseDto GetByCategory(string category)
+    {
+        try
+        {
+            IEnumerable<Product> objList = db.Products.Where(u=>u.Category==category).ToList();
+            response.Result = mapper.Map<IEnumerable<ProductDto>>(objList);
+            
+        }
+        catch (Exception e)
+        {
+            response.IsSuccess = false;
+            response.Message = e.Message;
+        }
+        return response;
+    }
 
     private async Task<TOut> GetResponseRabbitTask<TIn, TOut>(TIn request)
         where TIn : class
