@@ -92,4 +92,24 @@ public class StorageController : Controller
         }
         return View(model);
     }
+    
+    public async Task<IActionResult> StorageDeleteById(int productId)
+    {
+        ResponseDto? response = await _storageService.DeleteProductAsync(productId);
+
+        if (response != null && response.IsSuccess)
+        {
+            TempData["success"] = "Product deleted successfully";
+            return RedirectToAction(nameof(StorageIndex));
+        }
+        else
+        {
+            TempData["error"] = response?.Message;
+        }
+        return RedirectToAction(nameof(StorageIndex));
+    }
+    public async Task<IActionResult> StorageUpdateForm(ProductDto productDto)
+    {
+        return View(productDto);
+    }
 }

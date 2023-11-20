@@ -13,9 +13,10 @@
             <h1>@Model.Name</h1>
             <p>@Model.Category</p>
             <h2>@((Model.Price).ToString("c"))</h2>
+            <p>Count: @Model.Category</p>
             <div class = "cartWrapper">
-                <a class="addBtn" type="button" asp-action="" asp-route-productId = "">Update</a>
-                <a class="addBtn" type="button" asp-action="" asp-route-productId = "">Delete</a>
+                <a class="addBtn" type="button" asp-action="StorageUpdateForm" asp-route-productDto = "@Model">Update</a>
+                <a class="addBtn" type="button" asp-action="StorageDeleteById" asp-route-productId = "@Model.ProductId">Delete</a>
             </div>
             <p class ="productDescr">@Model.Description</p>
         </div>

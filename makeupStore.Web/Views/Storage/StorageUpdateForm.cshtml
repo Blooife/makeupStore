@@ -1,0 +1,21 @@
+@using makeupStore.Web.Utility
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model ProductDto
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post">
+    <div class="productDetails">
+        <img src="~/css/1.jpg" height=150px width=150px>
+        <div>
+            <input type="text" value=@(Model.Name)>
+            <input type="text" value=@Model.Category>
+            <input type="text" value=@((Model.Price).ToString("c"))>
+            <input type="text" value=@Model.Category>
+            <input type="text" value=@Model.Description>
+                        
+        </div>
+    </div>
+</form>
