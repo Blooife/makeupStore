@@ -7,6 +7,7 @@ using makeupStore.Services.ProductAPI.Extentions;
 using makeupStore.Services.ProductAPI.Services;
 using makeupStore.Services.ProductAPI.Services.IServices;
 using MassTransit;
+using MassTransit.Definition;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -63,6 +64,7 @@ builder.Services.AddMassTransit(x =>
     x.AddConsumer<AddProduct>();
     x.AddConsumer<UpdateProduct>();
     x.AddConsumer<GetProductsForCart>();
+    x.SetSnakeCaseEndpointNameFormatter();
     x.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host(new Uri("rabbitmq://localhost"));
