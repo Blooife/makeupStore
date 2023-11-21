@@ -1,3 +1,4 @@
+using IdentityModel;
 using makeupStore.Web.Models;
 using makeupStore.Web.Service.IService;
 using Microsoft.AspNetCore.Authorization;
@@ -16,7 +17,7 @@ public class CartController : Controller
         _cartService = cartService;
     }
 
-    [Authorize]
+    
     public async Task<IActionResult> CartIndex()
     {
         return View(await LoadCartDtoBasedOnLoggedInUser());

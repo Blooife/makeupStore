@@ -1,3 +1,5 @@
+using System.Collections;
+using IdentityModel;
 using makeupStore.Web.Models;
 using makeupStore.Web.Service.IService;
 using Microsoft.AspNetCore.Mvc;
@@ -8,10 +10,12 @@ namespace makeupStore.Web.Controllers;
 public class ProductController : Controller
 {
     private readonly IProductService _productService;
+    private readonly ICartService _cartService;
 
-    public ProductController(IProductService productService)
+    public ProductController(IProductService productService, ICartService cartService)
     {
         _productService = productService;
+        _cartService = cartService;
     }
 
     public async Task<IActionResult> ProductIndex()
@@ -33,5 +37,36 @@ public class ProductController : Controller
             model = JsonConvert.DeserializeObject<ProductDto>(response.Result.ToString());
         }
         return View(model);
+    }
+    
+    [HttpPost]
+    [ActionName("ProductDetails")]
+    public async Task<IActionResult> ProductDetails(ProductDto productDto)
+    {
+        CartDto cartDto = new CartDto()
+        {
+            CartHeader = new CartHeaderDto
+            {
+                UserId = User.Claims.Where(u => u.Type == JwtClaimTypes.Subject)?.FirstOrDefault()?.Value
+            }
+        };
+
+        cartDto.CartDetails = new List<CartDetailsDto>(){new CartDetailsDto()
+        {
+            Count = productDto.Count,
+            ProductId = productDto.ProductId,
+           // Product = productDto,
+        }};
+        ResponseDto? response = await _cartService.UpsertCartAsync(cartDto);
+        if (response != null && response.IsSuccess)
+        {
+            TempData["success"] = "Item has been added to the Shopping Cart";
+            return RedirectToAction(nameof(ProductIndex));
+        }
+        else
+        {
+            TempData["error"] = response?.Message;
+        }
+        return View(productDto);
     }
 }

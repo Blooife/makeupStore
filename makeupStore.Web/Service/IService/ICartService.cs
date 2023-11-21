@@ -4,5 +4,7 @@ namespace makeupStore.Web.Service.IService;
 
 public interface ICartService
 {
-    Task<ResponseDto?> GetCartByUserIdAsync(string userId);
+    public Task<ResponseDto?> GetCartByUserIdAsync(string userId);
+    public Task<ResponseDto?> UpsertCartAsync(CartDto cartDto);
+    public Task<ResponseDto?> RemoveFromCartAsync(int cartDetailsId);
 }

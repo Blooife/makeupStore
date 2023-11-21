@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "TVEhP9GeeH8oN+SIww0UmyuXSQIznDaxdet3wBYLO20tR9fKBzjGO5BrwTUpLEe24PDl9jbtm8MbxG/RmZoYdQ==",
+  "dgSpecHash": "7kzeFy82CYIy20ksMlDh30Gt0IkC51mrEWrUKhSRx4EAOUrJf2SmFPcxRRwXpMO3gBFlGBWchv+BIHotKf2JGw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Asus\\RiderProjects\\makeupStore\\makeupStore.Web\\makeupStore.Web.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Asus\\.nuget\\packages\\identitymodel\\6.2.0\\identitymodel.6.2.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.identitymodel.abstractions\\7.0.3\\microsoft.identitymodel.abstractions.7.0.3.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\7.0.3\\microsoft.identitymodel.jsonwebtokens.7.0.3.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.identitymodel.logging\\7.0.3\\microsoft.identitymodel.logging.7.0.3.nupkg.sha512",

@@ -74,3 +74,4 @@ C:\Users\HP\Desktop\makeupStore\makeupStore.Web\obj\Debug\net7.0\refint\makeupSt
 C:\Users\HP\Desktop\makeupStore\makeupStore.Web\obj\Debug\net7.0\makeupStore.Web.pdb
 C:\Users\HP\Desktop\makeupStore\makeupStore.Web\obj\Debug\net7.0\makeupStore.Web.genruntimeconfig.cache
 C:\Users\HP\Desktop\makeupStore\makeupStore.Web\obj\Debug\net7.0\ref\makeupStore.Web.dll
+C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Web\bin\Debug\net7.0\IdentityModel.dll

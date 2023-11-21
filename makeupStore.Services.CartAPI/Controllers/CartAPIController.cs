@@ -66,10 +66,11 @@ namespace makeupStore.Services.CartAPI.Controllers
 
 
         [HttpPost("CartUpsert")]
-        public async Task<ResponseDto> CartUpsert(CartDto cartDto)
+        public async Task<ResponseDto> CartUpsert([FromBody] CartDto cartDto)
         {
             try
             {
+                Console.WriteLine("CartUpsert api controller");
                 var cartHeaderFromDb = await _db.CartHeaders.AsNoTracking()
                     .FirstOrDefaultAsync(u => u.UserId == cartDto.CartHeader.UserId);
                 if (cartHeaderFromDb == null)
@@ -115,6 +116,23 @@ namespace makeupStore.Services.CartAPI.Controllers
             }
             return _response;
         }
+        
+        /*[HttpPost("CartUpsert")]
+        public async Task<ResponseDto> CartUpsert(int some)
+        {
+            try
+            {
+                Console.WriteLine("CartUpsert api controller");
+                
+                _response.Result = "cartDto";
+            }
+            catch (Exception ex)
+            {
+                _response.Message= ex.Message.ToString();
+                _response.IsSuccess= false;
+            }
+            return _response;
+        }*/
 
 
 
@@ -123,6 +141,7 @@ namespace makeupStore.Services.CartAPI.Controllers
         {
             try
             {
+                Console.WriteLine("remove");
                 CartDetails cartDetails = _db.CartDetails
                    .First(u => u.CartDetailsId == cartDetailsId);
 

@@ -18,7 +18,29 @@ public class CartService : ICartService
         return await _baseService.SendAsync(new RequestDto()
         {
             ApiType = SD.ApiType.GET,
-            Url = SD.CartAPIBase + "/api/cartAPI/GetCart/" + userId
+            Url = SD.CartAPIBase + "/api/CartAPI/GetCart/" + userId
+        });
+    }
+    
+    public async Task<ResponseDto?> RemoveFromCartAsync(int cartDetailsId)
+    { 
+        return await _baseService.SendAsync(new RequestDto()
+        {
+            ApiType = SD.ApiType.POST,
+            Data = cartDetailsId,
+            Url = SD.CartAPIBase + "/api/CartAPI/RemoveCart"
+        });
+    }
+    
+          
+    public async Task<ResponseDto?> UpsertCartAsync(CartDto cartDto)
+    {
+        Console.WriteLine("CartUpsert cart service");
+        return await _baseService.SendAsync(new RequestDto()
+        {
+            ApiType = SD.ApiType.POST,
+            Data = cartDto,
+            Url = SD.CartAPIBase + "/api/CartAPI/CartUpsert"
         });
     }
 }
