@@ -46,14 +46,13 @@ namespace makeupStore.Services.CartAPI.Controllers
                     {
                         ProductsIds = prIds,
                     });
-                
+                cart.CartHeader.CartTotal = 0;
                 foreach (var p in products.Products)
                 {
                     var c =cart.CartDetails.First(u => u.ProductId == p.ProductId);
                     c.Product = _mapper.Map<ProductDto>(p);
-                    cart.CartHeader.CartTotal += c.Product.Price * c.Product.Count;
+                    cart.CartHeader.CartTotal += c.Product.Price * c.Count;
                 }
-                
                 _response.Result = cart;
             }
             catch (Exception ex)
@@ -117,25 +116,6 @@ namespace makeupStore.Services.CartAPI.Controllers
             return _response;
         }
         
-        /*[HttpPost("CartUpsert")]
-        public async Task<ResponseDto> CartUpsert(int some)
-        {
-            try
-            {
-                Console.WriteLine("CartUpsert api controller");
-                
-                _response.Result = "cartDto";
-            }
-            catch (Exception ex)
-            {
-                _response.Message= ex.Message.ToString();
-                _response.IsSuccess= false;
-            }
-            return _response;
-        }*/
-
-
-
         [HttpPost("RemoveCart")]
         public async Task<ResponseDto> RemoveCart([FromBody]int cartDetailsId)
         {

@@ -1,7 +1,7 @@
-@model CartDto
-
-@if (Model.CartHeader != null && Model.CartDetails?.Count() > 0)
-{
+﻿@model CartDto
+@if(Model.CartHeader!=null && Model.CartDetails?.Count()>0){
+<form method="post">
+    <br />
     <input asp-for="CartHeader.UserId" hidden />
     <input asp-for="CartHeader.CartHeaderId" hidden />
     <div class="">
@@ -14,7 +14,7 @@
                     <a asp-action="Index" asp-controller="Home" class="btn btn-outline-warning mt-2 btn-sm">Continue Shopping</a>
                 </div>
             </div>
-            <d class="card-body">
+            <div class="card-body">
                 <div class=" d-none d-lg-block">
                     <div class="row text-info">
                         <div class="col-lg-2">
@@ -50,22 +50,37 @@
                         <span style="font-size:17px;"> @cartObj.Count</span>
                     </div>
                     <div class="col-2 col-lg-1 p-0 pt-lg-4 text-center">
+                        <a asp-action="Remove" asp-route-cartDetailsId="@cartObj.CartDetailsId" class="btn btn-sm btn-danger">
+                            <i class="bi bi-trash-fill"></i>
+                        </a>
                     </div>
                 </div>
                 }
                 <hr />
                 <div class="row">
                     <div class="col-6">
-                       
+                        
+                    </div>
+                    <div class="col-6 text-end">
+                        <span class="text-danger" style="font-size:21px;">  Order Total :  @string.Format("{0:c}", Model.CartHeader.CartTotal)  <br /></span>
+                        
                     </div>
                 </div>
-            </d>
+            </div>
+            <div class="card-footer row">
+                <div class="col-6 col-md-3 ">
+                    <button type="submit" class="btn btn-outline-danger form-control">Email Cart</button>
+                </div>
+                <div class="col-6 col-md-3 offset-md-6">
+                    <a asp-action="Checkout" class="btn btn-success form-control">Order</a>
+                </div>
+            </div>
         </div>
     </div>
+</form>
 }
 else{
     <div>
         <p>Please add items to cart.</p>
     </div>
-}
 }

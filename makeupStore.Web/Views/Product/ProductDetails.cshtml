@@ -13,10 +13,11 @@
             <p>@Model.Category</p>
             <h2>@((Model.Price).ToString("c"))</h2>
             <div class = "cartWrapper">
-                <div class ="counter">
-                    <input  asp-for="Count" type="button" value="-" onclick="val.innerText--"/>
+                <div class="counter">
+                    <input asp-for="Count" />
+                    @*<input asp-for="Count" type="button" value="-" onclick="val.innerText--"/>
                     <span asp-for="Count" id="val">0</span>
-                    <input asp-for="Count" type="button" value="+" onclick="val.innerText++"/>
+                    <input asp-for="Count" type="button" value="+" onclick="val.innerText++"/>*@
                 </div>
                 @if (User.Identity.IsAuthenticated)
                 {

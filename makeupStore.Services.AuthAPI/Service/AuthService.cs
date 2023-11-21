@@ -35,7 +35,6 @@ public class AuthService : IAuthService
                 return true;
             }
             return false;
-
     }
 
     public async Task<LoginResponseDto> Login(LoginRequestDto loginRequestDto)
