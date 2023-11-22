@@ -104,7 +104,7 @@ public class StorageAPIController : ControllerBase
             return Problem(JsonConvert.SerializeObject(responseDto));
         }
     }
-    
+
     [HttpDelete]
     [Route("{id:int}")]
     //[Authorize(Roles = "ADMIN")]

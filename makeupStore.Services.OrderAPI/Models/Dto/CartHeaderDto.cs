@@ -6,5 +6,12 @@ namespace makeupStore.Services.OrderAPI.Models.Dto
         public int CartHeaderId { get; set; }
         public string? UserId { get; set; }
         public double CartTotal { get; set; }
+        
+        
+        public string? Name { get; set; }
+       
+        public string? Phone { get; set; }
+        
+        public string? Email { get; set; }
     }
 }

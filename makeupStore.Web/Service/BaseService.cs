@@ -35,6 +35,8 @@ public class BaseService : IBaseService
             if (requestDto.Data != null)
             {
                 message.Content = new StringContent(JsonConvert.SerializeObject(requestDto.Data), Encoding.UTF8, "application/json");
+                Console.WriteLine("m c!!!!! "+message.Content.ToString());
+                Console.WriteLine(JsonConvert.SerializeObject(requestDto.Data));
             }
 
             HttpResponseMessage? apiResponse = null;

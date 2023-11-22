@@ -69,7 +69,6 @@ namespace makeupStore.Services.CartAPI.Controllers
         {
             try
             {
-                Console.WriteLine("CartUpsert api controller");
                 var cartHeaderFromDb = await _db.CartHeaders.AsNoTracking()
                     .FirstOrDefaultAsync(u => u.UserId == cartDto.CartHeader.UserId);
                 if (cartHeaderFromDb == null)

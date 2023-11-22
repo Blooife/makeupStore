@@ -23,6 +23,7 @@ public class StorageController : Controller
             list = JsonConvert.DeserializeObject<List<ProductDto>>(response.Result.ToString());
         }
         return View(list);
+        return null;
     }
 
     [HttpPost]

@@ -26,4 +26,8 @@
       <_ContentIncludedByDefault Remove="Pages\Cart\CartIndex.cshtml" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Pages" />
+    </ItemGroup>
+
 </Project>
