@@ -75,3 +75,7 @@ C:\Users\HP\Desktop\makeupStore\makeupStore.Web\obj\Debug\net7.0\makeupStore.Web
 C:\Users\HP\Desktop\makeupStore\makeupStore.Web\obj\Debug\net7.0\makeupStore.Web.genruntimeconfig.cache
 C:\Users\HP\Desktop\makeupStore\makeupStore.Web\obj\Debug\net7.0\ref\makeupStore.Web.dll
 C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Web\bin\Debug\net7.0\IdentityModel.dll
+C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Web\bin\Debug\net7.0\nlog.config
+C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Web\bin\Debug\net7.0\NLog.dll
+C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Web\bin\Debug\net7.0\NLog.Extensions.Logging.dll
+C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Web\bin\Debug\net7.0\NLog.Web.AspNetCore.dll

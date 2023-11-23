@@ -87,3 +87,6 @@ C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Services.OrderAPI\obj\Debug\
 C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Services.OrderAPI\obj\Debug\net7.0\makeupStore.Services.OrderAPI.pdb
 C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Services.OrderAPI\obj\Debug\net7.0\makeupStore.Services.OrderAPI.genruntimeconfig.cache
 C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Services.OrderAPI\obj\Debug\net7.0\ref\makeupStore.Services.OrderAPI.dll
+C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Services.OrderAPI\bin\Debug\net7.0\NLog.dll
+C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Services.OrderAPI\bin\Debug\net7.0\NLog.Extensions.Logging.dll
+C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Services.OrderAPI\bin\Debug\net7.0\NLog.Web.AspNetCore.dll

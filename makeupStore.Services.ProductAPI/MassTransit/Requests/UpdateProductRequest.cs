@@ -1,4 +1,4 @@
-using makeupStore.Services.StorageAPI.Models;
+using makeupStore.Services.ProductAPI.Models;
 
 namespace makeupStore.Services.MassTransit.Requests;
 

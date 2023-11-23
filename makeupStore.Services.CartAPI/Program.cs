@@ -8,6 +8,7 @@ using Microsoft.OpenApi.Models;
 using makeupStore.Services.CartAPI.Extentions;
 using MassTransit;
 using Newtonsoft.Json;
+using NLog.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -78,6 +79,9 @@ builder.Services.AddMassTransit(x =>
 
 });
 builder.Services.AddMassTransitHostedService();
+
+builder.Logging.ClearProviders();
+builder.Host.UseNLog();
 
 var app = builder.Build();
 

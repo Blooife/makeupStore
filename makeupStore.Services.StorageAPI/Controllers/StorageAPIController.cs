@@ -91,7 +91,7 @@ public class StorageAPIController : ControllerBase
     {
         try
         {
-            var response = await GetResponseRabbitTask<AddProductRequest, BaseResponse>(new AddProductRequest()
+            var response = await GetResponseRabbitTask<UpdateProductRequest, BaseResponse>(new UpdateProductRequest()
             {
                 product = mapper.Map<ProductDto,Product>(productDto),
             });

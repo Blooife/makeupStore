@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2ZYZ1Hpd22ivNrpBok0clqSOcU6EFgEB3K9XQz1MxbApz8IBES9kHNh+4Vfs1CsJOFOEO/FhO81/KGKNmvmLJA==",
+  "dgSpecHash": "Li8aEtAIWpZqWDT2F8nB6ywqHXiMDSEqkBLtnFQ401fZYZtClZPUaPAEQHB0yc328HN1XePjvSdIa80SD5A7IA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Asus\\RiderProjects\\makeupStore\\makeupStore.Services.CartAPI\\makeupStore.Services.CartAPI.csproj",
   "expectedPackageFiles": [
@@ -63,6 +63,9 @@
     "C:\\Users\\Asus\\.nuget\\packages\\newid\\3.0.3\\newid.3.0.3.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\newtonsoft.json.bson\\1.0.1\\newtonsoft.json.bson.1.0.1.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\nlog\\5.2.6\\nlog.5.2.6.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\nlog.extensions.logging\\5.3.5\\nlog.extensions.logging.5.3.5.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\nlog.web.aspnetcore\\5.3.5\\nlog.web.aspnetcore.5.3.5.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\rabbitmq.client\\6.2.2\\rabbitmq.client.6.2.2.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

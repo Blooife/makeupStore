@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ujNzNfTDXG592mpFxcrXKDfQjSFfDuATy5Lo11J+XeYLuUGaYSLXkIkuU49IWjyh0NQeip5mMcJTYJg7CFFNuQ==",
+  "dgSpecHash": "J4b6sXYnR6VlBeJXoB6ki+EklARBDoNEULa4tvT/+OxevOmkWYdyl4iMDSF9GxYpFOhEQX7hR2xO4uqiIeLDRQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Asus\\RiderProjects\\makeupStore\\makeupStore.Services.AuthAPI\\makeupStore.Services.AuthAPI.csproj",
   "expectedPackageFiles": [
@@ -53,6 +53,9 @@
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\nlog\\5.2.6\\nlog.5.2.6.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\nlog.extensions.logging\\5.3.5\\nlog.extensions.logging.5.3.5.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\nlog.web.aspnetcore\\5.3.5\\nlog.web.aspnetcore.5.3.5.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",

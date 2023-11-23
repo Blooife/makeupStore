@@ -176,3 +176,7 @@ C:\Users\HP\Desktop\makeupStore\makeupStore.Services.ProductAPI\obj\Debug\net7.0
 C:\Users\HP\Desktop\makeupStore\makeupStore.Services.ProductAPI\obj\Debug\net7.0\makeupStore.Services.ProductAPI.pdb
 C:\Users\HP\Desktop\makeupStore\makeupStore.Services.ProductAPI\obj\Debug\net7.0\makeupStore.Services.ProductAPI.genruntimeconfig.cache
 C:\Users\HP\Desktop\makeupStore\makeupStore.Services.ProductAPI\obj\Debug\net7.0\ref\makeupStore.Services.ProductAPI.dll
+C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Services.ProductAPI\bin\Debug\net7.0\nlog.config
+C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Services.ProductAPI\bin\Debug\net7.0\NLog.dll
+C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Services.ProductAPI\bin\Debug\net7.0\NLog.Extensions.Logging.dll
+C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Services.ProductAPI\bin\Debug\net7.0\NLog.Web.AspNetCore.dll
