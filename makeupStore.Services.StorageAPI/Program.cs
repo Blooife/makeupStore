@@ -3,6 +3,8 @@ using GreenPipes;
 using MassTransit;
 using Newtonsoft.Json;
 using makeupStore.Services.StorageAPI;
+using NLog;
+using NLog.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -47,6 +49,9 @@ builder.Services.AddMassTransit(x =>
 builder.Services.AddMassTransitHostedService();
 
 builder.Services.AddControllers();
+
+//builder.Logging.ClearProviders();
+builder.Host.UseNLog();
 
 var app = builder.Build();
 

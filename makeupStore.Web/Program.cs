@@ -2,6 +2,7 @@ using makeupStore.Web.Service;
 using makeupStore.Web.Service.IService;
 using makeupStore.Web.Utility;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using NLog.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +34,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     optioins.LoginPath = "/AuthAPI/Login";
     optioins.AccessDeniedPath = "/AuthAPI/AccessDenied";
 });
+
+//builder.Logging.ClearProviders();
+builder.Host.UseNLog();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

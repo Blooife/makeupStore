@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
+using NLog.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -78,6 +79,10 @@ builder.Services.AddMassTransit(x =>
 
 });
 builder.Services.AddMassTransitHostedService();
+
+builder.Logging.ClearProviders();
+builder.Host.UseNLog();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

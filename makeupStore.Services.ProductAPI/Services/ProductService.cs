@@ -50,23 +50,29 @@ public class ProductService : IProductService
     {
         Product obj = _db.Products.First(u=>u.ProductId==id);
         _db.Products.Remove(obj);
-        _db.SaveChanges();
+        await _db.SaveChangesAsync();
         return new BaseResponse();
     }
 
     public async Task<BaseResponse> AddProduct(Product product)
     {
-        Console.WriteLine("Adding to db product in service");
-        Console.WriteLine(product.ToString());
-        _db.Products.Add(product);
-        _db.SaveChanges();
-        return new BaseResponse();
+        /*if (_db.Products.FirstOrDefault(p => p.Name == product.Name) != null)
+        {*/
+        Console.WriteLine("Adding "+product.Name);
+            _db.Products.Add(product);
+           await _db.SaveChangesAsync();
+            return new BaseResponse();
+        /*}
+        else
+        {
+            return new BaseResponse();
+        }*/
     }
 
     public async Task<BaseResponse> UpdateProduct(Product product)
     {
         _db.Products.Update(product);
-        _db.SaveChanges();
+        await _db.SaveChangesAsync();
         return new BaseResponse();
     }
 }

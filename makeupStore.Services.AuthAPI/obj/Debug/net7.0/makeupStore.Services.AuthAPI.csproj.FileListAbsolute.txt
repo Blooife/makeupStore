@@ -168,3 +168,7 @@ C:\Users\HP\Desktop\makeupStore\makeupStore.Services.AuthAPI\obj\Debug\net7.0\re
 C:\Users\HP\Desktop\makeupStore\makeupStore.Services.AuthAPI\obj\Debug\net7.0\makeupStore.Services.AuthAPI.pdb
 C:\Users\HP\Desktop\makeupStore\makeupStore.Services.AuthAPI\obj\Debug\net7.0\makeupStore.Services.AuthAPI.genruntimeconfig.cache
 C:\Users\HP\Desktop\makeupStore\makeupStore.Services.AuthAPI\obj\Debug\net7.0\ref\makeupStore.Services.AuthAPI.dll
+C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Services.AuthAPI\bin\Debug\net7.0\nlog.config
+C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Services.AuthAPI\bin\Debug\net7.0\NLog.dll
+C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Services.AuthAPI\bin\Debug\net7.0\NLog.Extensions.Logging.dll
+C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Services.AuthAPI\bin\Debug\net7.0\NLog.Web.AspNetCore.dll

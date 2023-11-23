@@ -4,13 +4,13 @@ using MassTransit;
 
 namespace makeupStore.Services.ProductAPI.Consumers;
 
-public class UpdateProduct : BaseConsumer, IConsumer<AddProductRequest>
+public class UpdateProduct : BaseConsumer, IConsumer<UpdateProductRequest>
 {
     public UpdateProduct(IProductService prService) : base(prService)
     {
     }
 
-    public async Task Consume(ConsumeContext<AddProductRequest> context)
+    public async Task Consume(ConsumeContext<UpdateProductRequest> context)
     {
         var order = await _productService.UpdateProduct(context.Message.product);
         await context.RespondAsync(order);
