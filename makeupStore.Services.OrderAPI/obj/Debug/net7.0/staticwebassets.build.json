@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "3BVpT2Z1dElTyjgpG01oU6rHH+fYBxGF+5ENlNNgCM0=",
+  "Source": "makeupStore.Services.OrderAPI",
+  "BasePath": "_content/makeupStore.Services.OrderAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
