@@ -71,6 +71,8 @@ public class StorageAPIController : ControllerBase
     {
         try
         {
+            Console.WriteLine("Im in storage Add product");
+            Console.WriteLine(productDto.ToString());
             var response = await GetResponseRabbitTask<AddProductRequest, BaseResponse>(new AddProductRequest()
             {
                 product = mapper.Map<ProductDto,Product>(productDto),

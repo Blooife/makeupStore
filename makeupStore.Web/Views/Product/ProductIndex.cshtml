@@ -12,7 +12,10 @@
 </head>
 <body>
 <div class = "productIndexContent">
-
+<div class = "cart_header">
+            <h1>Catalog</h1>
+            <a asp-action="ProductIndex" asp-controller="Product">Continue Shopping</a>
+        </div>
 @foreach (var item in Model)
 {
 <div class="productItem">

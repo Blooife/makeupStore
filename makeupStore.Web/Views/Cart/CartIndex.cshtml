@@ -4,75 +4,51 @@
     <br />
     <input asp-for="CartHeader.UserId" hidden />
     <input asp-for="CartHeader.CartHeaderId" hidden />
-    <div class="">
-        <div class="card border mt-4 container">
-            <div class="card-header bg-dark text-light ml-0 row ">
-                <div class="col-6">
-                    <h3 class="text-success"><i class="bi bi-cart"></i> &nbsp; Shopping Cart</h3>
-                </div>
-                <div class="col-6 text-end">
-                    <a asp-action="Index" asp-controller="Home" class="btn btn-outline-warning mt-2 btn-sm">Continue Shopping</a>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class=" d-none d-lg-block">
-                    <div class="row text-info">
-                        <div class="col-lg-2">
-                        </div>
-                        <div class="col-lg-5">
-                            Product Details
-                        </div>
-                        <div class="col-lg-2">
-                            Price
-                        </div>
-                        <div class="col-lg-2">
-                            Count
-                        </div>
-                        <div class="col-lg-1">
-                        </div>
-                    </div>
-                </div>
-                <hr />
-
-                @foreach(var cartObj in Model.CartDetails){
-                <div class="row h-100">
-                    <div class="col-4 col-md-2 text-center py-2">
-                        <img src="@cartObj.Product.ImageUrl" class="rounded" width="100%" />
-                    </div>
-                    <div class="col-8 col-md-5">
-                        <h5>@cartObj.Product.Name</h5>
-                        <div style="font-size:11px;">@Html.Raw(cartObj.Product.Description)</div>
-                    </div>
-                    <div class="col-3 col-md-2 pt-md-4" style="font-size:11px;">
-                            <span style="font-size:17px;">@string.Format("{0:c}",cartObj.Product.Price) </span>
-                    </div>
-                    <div class="col-3 col-md-2 pt-md-4" style="font-size:11px;">
-                        <span style="font-size:17px;"> @cartObj.Count</span>
-                    </div>
-                    <div class="col-2 col-lg-1 p-0 pt-lg-4 text-center">
-                        <a asp-action="Remove" asp-route-cartDetailsId="@cartObj.CartDetailsId" class="btn btn-sm btn-danger">
-                            <i class="bi bi-trash-fill"></i>
-                        </a>
-                    </div>
-                </div>
-                }
-                <hr />
-                <div class="row">
-                    <div class="col-6">
-                        
-                    </div>
-                    <div class="col-6 text-end">
-                        <span class="text-danger" style="font-size:21px;">  Order Total :  @string.Format("{0:c}", Model.CartHeader.CartTotal)  <br /></span>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer row">
-                <div class="col-6 col-md-3 offset-md-6">
-                    <a asp-action="Checkout" class="btn btn-success form-control">Order</a>
-                </div>
-            </div>
+    <div class = "cart_header">
+        <h1>Shopping Cart</h1>
+        <a asp-action="ProductIndex" asp-controller="Product">Continue Shopping</a>
+    </div>
+    <div>
+        <div class="cart_list_header">
+            <h3 class = "long_item"></h3>
+            <h3 class="short_item">Name</h3>
+            <h3 class="long_item">Details</h3>
+            <h3 class="short_item">Price</h3>
+            <h3 class="short_item">Count</h3>
+            <h3 class="short_item"></h3>
         </div>
+        <hr />
+        @foreach(var cartObj in Model.CartDetails){
+            <div class="cart_item">
+                <div class="long_item" >
+                    <img src="~/css/1.jpg"/>
+                </div>
+                <p class="short_item">@cartObj.Product.Name</p>
+                <p class="long_item">@Html.Raw(cartObj.Product.Description)</p>
+                <p class="short_item">@string.Format("{0:c}", cartObj.Product.Price) </p>
+                <div class="short_item count">
+                    <a asp-action="CountDec" asp-route-CartDetailsId="@cartObj.CartDetailsId">-</a>
+                    <span id="val" min="1" max="100">@cartObj.Count</span>
+                    <a asp-action="CountInc" asp-route-CartDetailsId="@cartObj.CartDetailsId">+</a>
+                </div>
+                
+                <div class="short_item" >
+                    <a asp-action="Remove" asp-route-cartDetailsId="@cartObj.CartDetailsId">Delete</a>
+                </div>
+            </div>
+        }
+        <hr />
+        <div class="cart_list_header">
+            <h3 class = "long_item"></h3>
+            <h3 class="short_item"></h3>
+            <h3 class="long_item">Order Total: </h3>
+            <h3 class="short_item">@string.Format("{0:c}", Model.CartHeader.CartTotal)</h3>
+            <div class="short_item" >
+                <a class="order_btn" asp-action="Checkout">Order</a>
+            </div>
+            <h3 class="short_item"></h3>
+        </div>
+        <hr />
     </div>
 </form>
 }

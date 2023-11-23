@@ -56,6 +56,8 @@ public class ProductService : IProductService
 
     public async Task<BaseResponse> AddProduct(Product product)
     {
+        Console.WriteLine("Adding to db product in service");
+        Console.WriteLine(product.ToString());
         _db.Products.Add(product);
         _db.SaveChanges();
         return new BaseResponse();

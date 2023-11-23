@@ -12,6 +12,7 @@ public class AddProduct : BaseConsumer, IConsumer<AddProductRequest>
 
     public async Task Consume(ConsumeContext<AddProductRequest> context)
     {
+        
         var order = await _productService.AddProduct(context.Message.product);
         await context.RespondAsync(order);
     }

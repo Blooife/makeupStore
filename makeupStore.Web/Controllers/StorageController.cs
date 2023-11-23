@@ -31,6 +31,9 @@ public class StorageController : Controller
     {
         if (ModelState.IsValid)
         {
+            Console.WriteLine(model.Category);
+            Console.WriteLine(model.ImageUrl);
+            
             ResponseDto? response = await _storageService.CreateProductAsync(model);
 
             if (response != null && response.IsSuccess)
@@ -43,7 +46,7 @@ public class StorageController : Controller
                 TempData["error"] = response?.Message;
             }
         }
-        return View(model);
+        return RedirectToAction(nameof(StorageIndex));
     }
     
     public async Task<IActionResult> StorageGetById(int ProductId)
@@ -109,8 +112,42 @@ public class StorageController : Controller
         }
         return RedirectToAction(nameof(StorageIndex));
     }
-    public async Task<IActionResult> StorageUpdateForm(ProductDto productDto)
+    public async Task<IActionResult> StorageUpdateForm(int productId)
     {
-        return View(productDto);
+        ProductDto? model = new();
+        ResponseDto? response = await _storageService.GetProductByIdAsync(productId);
+        if (response != null && response.IsSuccess)
+        {
+            model = JsonConvert.DeserializeObject<ProductDto>(response.Result.ToString());
+        }
+        else
+        {
+            return NotFound();
+        }
+        return View(model);
+    }
+    [HttpPost]
+    public async Task<IActionResult> StorageUpdate(ProductDto productDto)
+    {
+        if (ModelState.IsValid)
+        {
+            ResponseDto? response = await _storageService.UpdateProductAsync(productDto);
+
+            if (response != null && response.IsSuccess)
+            {
+                TempData["success"] = "Product updated successfully";
+                return RedirectToAction(nameof(StorageIndex));
+            }
+            else
+            {
+                TempData["error"] = response?.Message;
+            }
+        }
+        return RedirectToAction(nameof(StorageIndex));
+    }
+    public async Task<IActionResult> StorageCreateForm()
+    {
+        
+        return View();
     }
 }

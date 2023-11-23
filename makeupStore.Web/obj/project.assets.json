@@ -287,19 +287,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Asus\\.nuget\\packages\\": {}
+    "C:\\Users\\HP\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Asus\\RiderProjects\\makeupStore\\makeupStore.Web\\makeupStore.Web.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Desktop\\makeupStore\\makeupStore.Web\\makeupStore.Web.csproj",
       "projectName": "makeupStore.Web",
-      "projectPath": "C:\\Users\\Asus\\RiderProjects\\makeupStore\\makeupStore.Web\\makeupStore.Web.csproj",
-      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Asus\\RiderProjects\\makeupStore\\makeupStore.Web\\obj\\",
+      "projectPath": "C:\\Users\\HP\\Desktop\\makeupStore\\makeupStore.Web\\makeupStore.Web.csproj",
+      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\HP\\Desktop\\makeupStore\\makeupStore.Web\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

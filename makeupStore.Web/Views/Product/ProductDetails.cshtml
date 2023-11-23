@@ -14,28 +14,17 @@
             <h2>@((Model.Price).ToString("c"))</h2>
             <div class = "cartWrapper">
                 <div class="counter">
-                    <input asp-for="Count" />
-                    @*<input asp-for="Count" type="button" value="-" onclick="val.innerText--"/>
-                    <span asp-for="Count" id="val">0</span>
-                    <input asp-for="Count" type="button" value="+" onclick="val.innerText++"/>*@
+                    <input asp-for="Count" id = "val" min = "1" max = "100" value="1"/>
                 </div>
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <a class="addBtn" type="button" asp-action="" asp-route-productId = "">Add to cart</a>
+                    <button class="addBtn" type="submit">Add to cart</button>
                 }
             </div>
             <p class ="productDescr">@Model.Description</p>
+            <button asp-action="ProductIndex" class="addBtn">Back to List</button>
         </div>
-        @*-------------*@
-        <div class="card-footer row bg-dark">
-            <div class="col-12 col-md-6 pb-1 ">
-                <a asp-action="ProductIndex" asp-controller="" class="btn btn-success btn-square form-control btn-lg" style="height:50px;">Back to List</a>
-            </div>
-            <div class="col-12 col-md-6 ">
-                <button type="submit" class="btn btn-primary form-control btn-lg" style="height:50px;">Add to Cart</button>
-            </div>
-        </div>
-        @*-------------*@
+        
     </div>
 </form>
 

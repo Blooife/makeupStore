@@ -5,17 +5,30 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<form method="post">
+<form asp-action="StorageUpdate" enctype="multipart/form-data">
     <div class="productDetails">
+        <input hidden asp-for="ProductId" />
+        <input hidden asp-for="ImageUrl" />
         <img src="~/css/1.jpg" height=150px width=150px>
         <div>
-            <input type="text" value=@(Model.Name)>
-            <input type="text" value=@Model.Category>
-            <input type="text" value=@((Model.Price).ToString("c"))>
-            <input type="text" value=@Model.Category>
-            <input type="text" value=@Model.Description>
-                        
+            <div class = "input_wrapper">
+                <h2>Name: </h2><input name="name" asp-for="Name" type="text" value="@Model.Name"/>
+            </div>
+            <div class = "input_wrapper">
+                <h2>Category: </h2><input name="category" asp-for="Category"  type="text" value="@Model.Category"/>
+            </div>
+            <div class = "input_wrapper">
+                <h2>Price: </h2><input name="price" asp-for="Price"  type="number" value="@(Model.Price)"/>
+            </div>
+            <div class = "input_wrapper">
+                <h2>Count: </h2><input name="count" asp-for="Count"  type="number" value="@Model.Count"/>
+            </div>
+            <div class = "input_wrapper">
+                <h2>Description: </h2>
+            </div>
+            <textarea id = "description" name = "description" asp-for="Description" type="text">@Model.Description</textarea>
+            <input class="saveBtn" type="submit" value="Save changes"/>
+                            
         </div>
     </div>
 </form>
