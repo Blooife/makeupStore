@@ -16,13 +16,13 @@ public class StorageAPIController : ControllerBase
 {
     private readonly IBusControl _busControl;
     private ResponseDto responseDto;
-    private IMapper mapper;
+    private IMapper _mapper;
     private readonly Uri _rabbitMqUrl = new Uri("rabbitmq://localhost/product-queue");
 
     public StorageAPIController(IBusControl bus, IMapper map)
     {
         _busControl = bus;
-        mapper = map;
+        _mapper = map;
         responseDto = new ResponseDto();
     }
     
@@ -33,7 +33,7 @@ public class StorageAPIController : ControllerBase
         {
             var response = await GetResponseRabbitTask<GetAllProductsRequest, GetAllProductsResponse>(new GetAllProductsRequest());
             IEnumerable<Product> objList = response.Products;
-            responseDto.Result = mapper.Map<IEnumerable<ProductDto>>(objList);
+            responseDto.Result = _mapper.Map<IEnumerable<ProductDto>>(objList);
             return Ok(responseDto);
         }
         catch (Exception e)
@@ -42,7 +42,6 @@ public class StorageAPIController : ControllerBase
             responseDto.Message = e.Message;
             return Problem(JsonConvert.SerializeObject(responseDto));
         }
-       
     }
     
     [HttpGet]
@@ -55,7 +54,7 @@ public class StorageAPIController : ControllerBase
             {
                 id = id,
             });
-            responseDto.Result = mapper.Map<ProductDto>(response.product);
+            responseDto.Result = _mapper.Map<ProductDto>(response.product);
             return Ok(responseDto);
         }
         catch (Exception e)
@@ -75,7 +74,7 @@ public class StorageAPIController : ControllerBase
             Console.WriteLine(productDto.ToString());
             var response = await GetResponseRabbitTask<AddProductRequest, BaseResponse>(new AddProductRequest()
             {
-                product = mapper.Map<ProductDto,Product>(productDto),
+                product = _mapper.Map<ProductDto,Product>(productDto),
             });
             return Ok(responseDto);
         }
@@ -95,7 +94,7 @@ public class StorageAPIController : ControllerBase
         {
             var response = await GetResponseRabbitTask<UpdateProductRequest, BaseResponse>(new UpdateProductRequest()
             {
-                product = mapper.Map<ProductDto,Product>(productDto),
+                product = _mapper.Map<ProductDto,Product>(productDto),
             });
             return Ok(responseDto);
         }

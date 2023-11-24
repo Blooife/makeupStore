@@ -6581,24 +6581,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HP\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Asus\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Desktop\\makeupStore\\makeupStore.Services.StorageAPI\\makeupStore.Services.StorageAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Asus\\RiderProjects\\makeupStore\\makeupStore.Services.StorageAPI\\makeupStore.Services.StorageAPI.csproj",
       "projectName": "makeupStore.Services.StorageAPI",
-      "projectPath": "C:\\Users\\HP\\Desktop\\makeupStore\\makeupStore.Services.StorageAPI\\makeupStore.Services.StorageAPI.csproj",
-      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Desktop\\makeupStore\\makeupStore.Services.StorageAPI\\obj\\",
+      "projectPath": "C:\\Users\\Asus\\RiderProjects\\makeupStore\\makeupStore.Services.StorageAPI\\makeupStore.Services.StorageAPI.csproj",
+      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Asus\\RiderProjects\\makeupStore\\makeupStore.Services.StorageAPI\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

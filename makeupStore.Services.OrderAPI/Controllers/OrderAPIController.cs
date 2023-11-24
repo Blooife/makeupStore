@@ -67,16 +67,11 @@ namespace makeupStore.Services.OrderAPI.Controllers
             return _response;
         }
 
-
-
-        
         [HttpPost("CreateOrder")]
-        public async Task<ResponseDto> CreateOrder([FromBody] /*CartDto cartDto*/ListProductDto pr)
+        public async Task<ResponseDto> CreateOrder([FromBody] CartDto cartDto)
         {
             try
             {
-                Console.WriteLine("im in");
-                CartDto cartDto = new CartDto();
                 OrderHeaderDto orderHeaderDto = _mapper.Map<OrderHeaderDto>(cartDto.CartHeader);
                 orderHeaderDto.OrderTime = DateTime.Now;
                 orderHeaderDto.Status = SD.Status_Pending;
