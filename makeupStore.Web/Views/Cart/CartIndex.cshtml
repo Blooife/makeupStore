@@ -1,5 +1,5 @@
 ﻿@model CartDto
-@if(Model.CartHeader!=null && Model.CartDetails?.Count()>0){
+@if(Model.CartHeader != null && Model.CartDetails?.Count()>0){
     <form method="post">
         <div class="cart_header">
             <h1>Shopping Cart</h1>
@@ -56,6 +56,6 @@
 }
 else{
     <div class="border mt-2 p-4 rounded">
-        <p>Please add items to cart.</p>
+        <p>@Model.CartDetails?.Count()</p>
     </div>
 }
