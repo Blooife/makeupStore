@@ -172,3 +172,7 @@ C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Services.AuthAPI\bin\Debug\n
 C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Services.AuthAPI\bin\Debug\net7.0\NLog.dll
 C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Services.AuthAPI\bin\Debug\net7.0\NLog.Extensions.Logging.dll
 C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Services.AuthAPI\bin\Debug\net7.0\NLog.Web.AspNetCore.dll
+C:\Users\HP\Desktop\makeupStore\makeupStore.Services.AuthAPI\bin\Debug\net7.0\nlog.config
+C:\Users\HP\Desktop\makeupStore\makeupStore.Services.AuthAPI\bin\Debug\net7.0\NLog.dll
+C:\Users\HP\Desktop\makeupStore\makeupStore.Services.AuthAPI\bin\Debug\net7.0\NLog.Extensions.Logging.dll
+C:\Users\HP\Desktop\makeupStore\makeupStore.Services.AuthAPI\bin\Debug\net7.0\NLog.Web.AspNetCore.dll

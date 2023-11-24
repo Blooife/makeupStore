@@ -1,59 +1,61 @@
 ﻿@model CartDto
 @if(Model.CartHeader!=null && Model.CartDetails?.Count()>0){
-<form method="post">
-    <br />
-    <input asp-for="CartHeader.UserId" hidden />
-    <input asp-for="CartHeader.CartHeaderId" hidden />
-    <div class = "cart_header">
-        <h1>Shopping Cart</h1>
-        <a asp-action="ProductIndex" asp-controller="Product">Continue Shopping</a>
-    </div>
-    <div>
-        <div class="cart_list_header">
-            <h3 class = "long_item"></h3>
-            <h3 class="short_item">Name</h3>
-            <h3 class="long_item">Details</h3>
-            <h3 class="short_item">Price</h3>
-            <h3 class="short_item">Count</h3>
-            <h3 class="short_item"></h3>
+    <form method="post">
+        <div class="cart_header">
+            <h1>Shopping Cart</h1>
+            <a asp-action="ProductIndex" asp-controller="Product">Continue Shopping</a>
         </div>
-        <hr />
-        @foreach(var cartObj in Model.CartDetails){
-            <div class="cart_item">
-                <div class="long_item" >
-                    <img src="~/css/1.jpg"/>
+        
+        <div class="border mt-2 p-4 rounded">
+            <input asp-for="CartHeader.UserId" hidden/>
+            <input asp-for="CartHeader.CartHeaderId" hidden/>
+
+            <div>
+                <div class="cart_list_header">
+                    <h3 class="long_item"></h3>
+                    <h3 class="short_item">Name</h3>
+                    <h3 class="long_item">Details</h3>
+                    <h3 class="short_item">Price</h3>
+                    <h3 class="short_item">Count</h3>
+                    <h3 class="short_item"></h3>
                 </div>
-                <p class="short_item">@cartObj.Product.Name</p>
-                <p class="long_item">@Html.Raw(cartObj.Product.Description)</p>
-                <p class="short_item">@string.Format("{0:c}", cartObj.Product.Price) </p>
-                <div class="short_item count">
-                    <a asp-action="CountDec" asp-route-CartDetailsId="@cartObj.CartDetailsId">-</a>
-                    <span id="val" min="1" max="100">@cartObj.Count</span>
-                    <a asp-action="CountInc" asp-route-CartDetailsId="@cartObj.CartDetailsId">+</a>
-                </div>
-                
-                <div class="short_item" >
-                    <a asp-action="Remove" asp-route-cartDetailsId="@cartObj.CartDetailsId">Delete</a>
+                <hr/>
+                @foreach (var cartObj in Model.CartDetails)
+                {
+                    <div class="cart_item">
+                        <div class="long_item">
+                            <img src="~/css/1.jpg"/>
+                        </div>
+                        <h5 class="short_item">@cartObj.Product.Name</h5>
+                        <span class="long_item">@Html.Raw(cartObj.Product.Description)</span>
+                        <h5 class="short_item">@string.Format("{0:c}", cartObj.Product.Price) </h5>
+                        <div class="short_item count">
+                            <a asp-action="CountDec" asp-route-CartDetailsId="@cartObj.CartDetailsId">-</a>
+                            <span id="val" min="1" max="100">@cartObj.Count</span>
+                            <a asp-action="CountInc" asp-route-CartDetailsId="@cartObj.CartDetailsId">+</a>
+                        </div>
+                        <div class="short_item">
+                            <a asp-action="Remove" asp-route-cartDetailsId="@cartObj.CartDetailsId">Delete</a>
+                        </div>
+                    </div>
+                }
+                <hr/>
+                <div class="cart_list_header">
+                    <h3 class="long_item"></h3>
+                    <h3 class="short_item"></h3>
+                    <h3 class="long_item">Order Total: </h3>
+                    <h3 class="short_item">@string.Format("{0:c}", Model.CartHeader.CartTotal)</h3>
+                    <div class="short_item">
+                        <a class="order_btn" asp-action="Checkout">Order</a>
+                    </div>
+                    <h3 class="short_item"></h3>
                 </div>
             </div>
-        }
-        <hr />
-        <div class="cart_list_header">
-            <h3 class = "long_item"></h3>
-            <h3 class="short_item"></h3>
-            <h3 class="long_item">Order Total: </h3>
-            <h3 class="short_item">@string.Format("{0:c}", Model.CartHeader.CartTotal)</h3>
-            <div class="short_item" >
-                <a class="order_btn" asp-action="Checkout">Order</a>
-            </div>
-            <h3 class="short_item"></h3>
         </div>
-        <hr />
-    </div>
-</form>
+    </form>
 }
 else{
-    <div>
+    <div class="border mt-2 p-4 rounded">
         <p>Please add items to cart.</p>
     </div>
 }

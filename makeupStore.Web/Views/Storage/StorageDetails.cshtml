@@ -5,19 +5,24 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<div class = "cart_header">
+    <h1>Description</h1>
+    <a asp-action="StorageIndex">Show storage</a>
+</div>
 <form method="post">
-    <div class="productDetails">
-        <img src="~/css/1.jpg" height=150px width=150px>
-        <div>
-            <h1>@Model.Name</h1>
-            <p>@Model.Category</p>
-            <h2>@((Model.Price).ToString("c"))</h2>
-            <p>Count: @Model.Count</p>
-            <p class ="productDescr">@Model.Description</p>
-            <div class = "cartWrapper">
-                <a class="addBtn" type="button" asp-action="StorageUpdateForm" asp-route-productId = "@Model.ProductId">Update</a>
-                <a class="addBtn" type="button" asp-action="StorageDeleteById" asp-route-productId = "@Model.ProductId">Delete</a>
+    <div class = "border mt-2 p-4 rounded">
+        <div class="productDetails ">
+            <img src="~/css/1.jpg" height=500px width=500px>
+            <div>
+                <h1>@Model.Name</h1>
+                <p>@Model.Category</p>
+                <h2>@((Model.Price).ToString("c"))</h2>
+                <p>Count: @Model.Count</p>
+                <p class="productDescr">@Model.Description</p>
+                <div class="product_counter">
+                    <button type="submit" asp-action="StorageUpdateForm" asp-route-productId="@Model.ProductId">Update</button>
+                    <button type="submit" asp-action="StorageDeleteById" asp-route-productId="@Model.ProductId">Delete</button>
+                </div>
             </div>
         </div>
     </div>

@@ -4,27 +4,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div class = "productIndexContent">
-<a class="showDetailsBtn" type="button" asp-action="StorageCreateForm">Create</a>
-@foreach (var item in Model)
-{
-<div class="productItem">
-    <img src="~/css/1.jpg" height=75px width=75px>
-    <div>
-        <h1>@item.Name</h1>
-        <p>@item.Category</p>
-        <h2>@((item.Price).ToString("c"))</h2>
-        <a class="showDetailsBtn" type="button" asp-action="StorageDetails" asp-route-productId = "@item.ProductId">Learn more</a>
-    </div>
-</div>}
-
+<div class = "cart_header">
+    <h1>Storage</h1>
+    <a asp-action="ProductIndex" asp-controller="Product">Show catalog</a>
 </div>
-</body>
-</html>
+
+<div class = "productIndexContent border mt-2 p-4 rounded">
+    <a class="my_btn" type="button" asp-action="StorageCreateForm">Create</a>
+    @foreach (var item in Model)
+    {
+    <div class="productItem">
+        <img src="~/css/1.jpg" height=75px width=75px>
+        <div>
+            <h1>@item.Name</h1>
+            <p>@item.Category</p>
+            <h2>@((item.Price).ToString("c"))</h2>
+            <a class="showDetailsBtn" type="button" asp-action="StorageDetails" asp-route-productId = "@item.ProductId">Learn more</a>
+        </div>
+    </div>}
+</div>

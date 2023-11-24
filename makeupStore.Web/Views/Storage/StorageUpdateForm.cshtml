@@ -5,30 +5,40 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class = "cart_header">
+    <h1>Update</h1>
+    <a asp-action="StorageDetails" asp-route-productId="@Model.ProductId">Show description</a>
+</div>
 <form asp-action="StorageUpdate" enctype="multipart/form-data">
-    <div class="productDetails">
-        <input hidden asp-for="ProductId" />
-        <input hidden asp-for="ImageUrl" />
-        <img src="~/css/1.jpg" height=150px width=150px>
-        <div>
-            <div class = "input_wrapper">
-                <h2>Name: </h2><input name="name" asp-for="Name" type="text" value="@Model.Name"/>
+    <div class = "border mt-2 p-4 rounded">
+        <div class="productDetails">
+            <input hidden asp-for="ProductId" />
+            <input hidden asp-for="ImageUrl" />
+            <img src="~/css/1.jpg" height=500px width=500px>
+            <div>
+                <div class = "product_info">
+                    <div class="input_wrapper">
+                        <h3>Name: </h3><input name="name" asp-for="Name" type="text" value="@Model.Name"/>
+                    </div>
+                    <div class="input_wrapper">
+                        <h3>Category: </h3><input name="category" asp-for="Category" type="text" value="@Model.Category"/>
+                    </div>
+                    <div class="input_wrapper">
+                        <h3>Price: </h3><input name="price" asp-for="Price" type="number" value="@(Model.Price)"/>
+                    </div>
+                    <div class="input_wrapper">
+                        <h3>Count: </h3><input name="count" asp-for="Count" type="number" value="@Model.Count"/>
+                    </div>
+                </div>
+                <div class="product_descr">
+                    <div class="input_wrapper">
+                        <h3>Description: </h3>
+                    </div>
+                    
+                    <textarea name = "description" asp-for="Description" type="text">@Model.Description</textarea>
+                    <input class="my_btn" type="submit" value="Save changes"/>
+                </div>
             </div>
-            <div class = "input_wrapper">
-                <h2>Category: </h2><input name="category" asp-for="Category"  type="text" value="@Model.Category"/>
-            </div>
-            <div class = "input_wrapper">
-                <h2>Price: </h2><input name="price" asp-for="Price"  type="number" value="@(Model.Price)"/>
-            </div>
-            <div class = "input_wrapper">
-                <h2>Count: </h2><input name="count" asp-for="Count"  type="number" value="@Model.Count"/>
-            </div>
-            <div class = "input_wrapper">
-                <h2>Description: </h2>
-            </div>
-            <textarea id = "description" name = "description" asp-for="Description" type="text">@Model.Description</textarea>
-            <input class="saveBtn" type="submit" value="Save changes"/>
-                            
         </div>
     </div>
 </form>

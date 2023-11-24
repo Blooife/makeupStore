@@ -3,31 +3,22 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div class = "productIndexContent">
 <div class = "cart_header">
-            <h1>Catalog</h1>
-            <a asp-action="ProductIndex" asp-controller="Product">Continue Shopping</a>
+    <h1>Catalog</h1>
+    <a asp-action="CartIndex" asp-controller="Cart">Show cart</a>
+</div>
+
+<div class = "productIndexContent border mt-2 p-4 rounded">
+    @foreach (var item in Model)
+    {
+    <div class="productItem">
+        <img src="~/css/1.jpg" height=75px width=75px>
+        <div>
+            <h1>@item.Name</h1>
+            <p>@item.Category</p>
+            <h2>@((item.Price).ToString("c"))</h2>
+            <a class="showDetailsBtn" type="button" asp-action="ProductDetails" asp-route-productId = "@item.ProductId">Learn more</a>
         </div>
-@foreach (var item in Model)
-{
-<div class="productItem">
-    <img src="~/css/1.jpg" height=75px width=75px>
-    <div>
-        <h1>@item.Name</h1>
-        <p>@item.Category</p>
-        <h2>@((item.Price).ToString("c"))</h2>
-        <a class="showDetailsBtn" type="button" asp-action="ProductDetails" asp-route-productId = "@item.ProductId">Learn more</a>
-    </div>
-</div>}
+    </div>}
 
 </div>
-</body>
-</html>

@@ -3,32 +3,40 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class = "cart_header">
+    <h1>Create</h1>
+    <a asp-action="StorageIndex">Show storage</a>
+</div>
 <form asp-action="StorageCreate" enctype="multipart/form-data">
-    <div class="productDetails">
-        
-        <img src="~/css/1.jpg" height=150px width=150px>
-        <div>
-            <div class = "input_wrapper">
-                <h2>Name: </h2><input name="name" asp-for="Name" type="text"/>
+    <div class = "border mt-2 p-4 rounded">
+        <div class="productDetails">
+            <img src="~/css/1.jpg" height=500px width=500px>
+            <div>
+                <div class = "product_info">
+                    <div class="input_wrapper">
+                        <h2>Name: </h2><input name="name" asp-for="Name" type="text"/>
+                    </div>
+                    <div class="input_wrapper">
+                        <h2>Category: </h2><input name="category" asp-for="Category" type="text"/>
+                    </div>
+                    <div class="input_wrapper">
+                        <h2>Price: </h2><input name="price" asp-for="Price" type="number"/>
+                    </div>
+                    <div class="input_wrapper">
+                        <h2>Count: </h2><input name="count" asp-for="Count" type="number"/>
+                    </div>
+                    <div class="input_wrapper">
+                        <h2>Image: </h2><input name="ImageUrl" asp-for="ImageUrl" type="text"/>
+                    </div>
+                </div>
+                <div class="product_descr">
+                    <div class="input_wrapper">
+                        <h2>Description: </h2>
+                    </div>
+                    <textarea id = "description" name = "description" asp-for="Description" type="text"></textarea>
+                    <input class="my_btn" type="submit" value="Save changes"/>
+                </div>
             </div>
-            <div class = "input_wrapper">
-                <h2>Category: </h2><input name="category" asp-for="Category"  type="text"/>
-            </div>
-            <div class = "input_wrapper">
-                <h2>Price: </h2><input name="price" asp-for="Price"  type="number"/>
-            </div>
-            <div class = "input_wrapper">
-                <h2>Count: </h2><input name="count" asp-for="Count"  type="number"/>
-            </div>
-            <div class = "input_wrapper">
-                <h2>Image: </h2><input name="ImageUrl" asp-for="ImageUrl" type="text"/>
-            </div>
-            <div class = "input_wrapper">
-                <h2>Description: </h2>
-            </div>
-            <textarea id = "description" name = "description" asp-for="Description" type="text"></textarea>
-            <input class="saveBtn" type="submit" value="Save changes"/>
-                            
         </div>
     </div>
 </form>

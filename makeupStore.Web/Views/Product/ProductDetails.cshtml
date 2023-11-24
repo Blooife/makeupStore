@@ -6,25 +6,29 @@
 }
 
 <form method="post">
-    <div class="productDetails">
-        <img src="~/css/1.jpg" height=150px width=150px>
-        <div>
-            <h1>@Model.Name</h1>
-            <p>@Model.Category</p>
-            <h2>@((Model.Price).ToString("c"))</h2>
-            <div class = "cartWrapper">
-                <div class="counter">
-                    <input asp-for="Count" id = "val" min = "1" max = "100" value="1"/>
+    <div class="cart_header">
+        <h1>Description</h1>
+        <a asp-action="ProductIndex" asp-controller="Product">Continue Shopping</a>
+    </div>
+    <div class = "border mt-2 p-4 rounded">
+        <div class="productDetails ">
+            <img src="~/css/1.jpg" height=500px width=500px>
+            <div>
+                <div class = "product_info">
+                    <h1>@Model.Name</h1>
+                    <p>@Model.Category</p>
+                    <h2>@((Model.Price).ToString("c"))</h2>
+                    <div class="product_counter">
+                        <input asp-for="Count" id="val" min="1" max="100" value="1"/>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <button type="submit">Add to cart</button>
+                        }
+                    </div>
                 </div>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <button class="addBtn" type="submit">Add to cart</button>
-                }
+                <p class="product_descr">@Model.Description</p>
             </div>
-            <p class ="productDescr">@Model.Description</p>
-            <button asp-action="ProductIndex" class="addBtn">Back to List</button>
         </div>
-        
     </div>
 </form>
 
