@@ -1,7 +1,5 @@
-using IdentityModel;
 using makeupStore.Web.Models;
 using makeupStore.Web.Service.IService;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Newtonsoft.Json;

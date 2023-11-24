@@ -56,17 +56,9 @@ public class ProductService : IProductService
 
     public async Task<BaseResponse> AddProduct(Product product)
     {
-        /*if (_db.Products.FirstOrDefault(p => p.Name == product.Name) != null)
-        {*/
-        Console.WriteLine("Adding "+product.Name);
-            _db.Products.Add(product);
-           await _db.SaveChangesAsync();
-            return new BaseResponse();
-        /*}
-        else
-        {
-            return new BaseResponse();
-        }*/
+        _db.Products.Add(product);
+        await _db.SaveChangesAsync();
+        return new BaseResponse();
     }
 
     public async Task<BaseResponse> UpdateProduct(Product product)
