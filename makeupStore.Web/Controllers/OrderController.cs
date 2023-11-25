@@ -19,9 +19,17 @@ public class OrderController : Controller
     }
     
     [Authorize]
-    public IActionResult OrderIndex()
+    public async Task<IActionResult> OrderIndex()
     {
-        return View();
+        IEnumerable<OrderHeaderDto> list = new List<OrderHeaderDto>();
+        string userId = User.Claims.Where(u => u.Type == JwtRegisteredClaimNames.Sub)?.FirstOrDefault()?.Value;
+        var response = await _orderService.GetOrdersByUserIdAsync(userId);
+        if (response != null && response.IsSuccess)
+        {
+            list = JsonConvert.DeserializeObject<List<OrderHeaderDto>>(Convert.ToString(response.Result));
+        }
+
+        return View(list);
     }
     
     public async Task<IActionResult> OrderDetail(int orderId)

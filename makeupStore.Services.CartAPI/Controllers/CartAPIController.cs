@@ -62,6 +62,58 @@ namespace makeupStore.Services.CartAPI.Controllers
             }
             return _response;
         }
+        
+        [HttpPost("DecCartCount")]
+        public async Task<ResponseDto> DecCartCount([FromBody] int cartDetailsId)
+        {
+            try
+            {
+                var cartDetails =  _db.CartDetails.FirstOrDefault(u=>u.CartDetailsId==cartDetailsId);
+                if (cartDetails != null)
+                {
+                    cartDetails.Count--;
+                    _db.Update(cartDetails);
+                    await _db.SaveChangesAsync();
+                }
+                else
+                {
+                    _response.IsSuccess = false;
+                    _response.Message = "Could not find cartDetails by Id";
+                }
+            }
+            catch (Exception ex)
+            {
+                _response.Message= ex.Message.ToString();
+                _response.IsSuccess= false;
+            }
+            return _response;
+        }
+        
+        [HttpPost("IncCartCount")]
+        public async Task<ResponseDto> IncCartCount([FromBody] int cartDetailsId)
+        {
+            try
+            {
+                var cartDetails =  _db.CartDetails.FirstOrDefault(u=>u.CartDetailsId==cartDetailsId);
+                if (cartDetails != null)
+                {
+                    cartDetails.Count++;
+                    _db.Update(cartDetails);
+                    await _db.SaveChangesAsync();
+                }
+                else
+                {
+                    _response.IsSuccess = false;
+                    _response.Message = "Could not find cartDetails by Id";
+                }
+            }
+            catch (Exception ex)
+            {
+                _response.Message= ex.Message.ToString();
+                _response.IsSuccess= false;
+            }
+            return _response;
+        }
 
 
         [HttpPost("CartUpsert")]

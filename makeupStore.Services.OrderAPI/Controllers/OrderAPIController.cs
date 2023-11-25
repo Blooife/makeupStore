@@ -27,7 +27,7 @@ namespace makeupStore.Services.OrderAPI.Controllers
 
         //[Authorize]
         [HttpGet("GetOrders")]
-        public ResponseDto? Get(string? userId = "")
+        public ResponseDto? Get([FromBody] string? userId = "")
         {
             try
             {
@@ -79,7 +79,6 @@ namespace makeupStore.Services.OrderAPI.Controllers
                 orderHeaderDto.OrderTotal = Math.Round(orderHeaderDto.OrderTotal, 2);
                 OrderHeader orderCreated = _db.OrderHeaders.Add(_mapper.Map<OrderHeader>(orderHeaderDto)).Entity;
                 await _db.SaveChangesAsync();
-
                 orderHeaderDto.OrderHeaderId = orderCreated.OrderHeaderId;
                 _response.Result = orderHeaderDto;
             }

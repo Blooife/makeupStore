@@ -183,3 +183,4 @@ C:\Users\HP\Desktop\makeupStore\makeupStore.Services.OrderAPI\obj\Debug\net7.0\r
 C:\Users\HP\Desktop\makeupStore\makeupStore.Services.OrderAPI\obj\Debug\net7.0\makeupStore.Services.OrderAPI.pdb
 C:\Users\HP\Desktop\makeupStore\makeupStore.Services.OrderAPI\obj\Debug\net7.0\makeupStore.Services.OrderAPI.genruntimeconfig.cache
 C:\Users\HP\Desktop\makeupStore\makeupStore.Services.OrderAPI\obj\Debug\net7.0\ref\makeupStore.Services.OrderAPI.dll
+C:\Users\Asus\RiderProjects\makeupStore\makeupStore.Services.OrderAPI\bin\Debug\net7.0\nlog.config

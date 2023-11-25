@@ -31,27 +31,13 @@ public class ProductService : IProductService
         });
     }
 
-    public async Task<ResponseDto?> CreateProductsAsync(ProductDto productDto)
+    public async Task<ResponseDto?> GetByCategoryAsync(string category)
     {
         return await _baseService.SendAsync(new RequestDto()
         {
             ApiType = SD.ApiType.POST,
-            Data=productDto,
-            Url = SD.ProductAPIBase + "/api/productAPI" 
-        });
-    }
-
-    public async Task<ResponseDto?> UpdateProductsAsync(ProductDto productDto)
-    {
-        throw new NotImplementedException();
-    }
-
-    public async Task<ResponseDto?> DeleteProductsAsync(int id)
-    {
-        return await _baseService.SendAsync(new RequestDto()
-        {
-            ApiType = SD.ApiType.DELETE,
-            Url = SD.ProductAPIBase + "/api/productAPI/" + id
+            Data = category,
+            Url = SD.ProductAPIBase + "/api/productAPI/GetByCategory"
         });
     }
 }

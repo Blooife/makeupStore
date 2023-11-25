@@ -5,6 +5,14 @@
 }
 <div class = "cart_header">
     <h1>Catalog</h1>
+    <form method="get" asp-controller="Product" asp-action="ProductByCategory">
+        <div class="col-12 col-md-6 offset-md-3 pb-2">
+            <select class="form-select" name="selectedCategory" asp-items="@ViewBag.CategoryList">
+                <option disabled selected>--Select Category--</option>
+            </select>
+        </div>
+        <button type="submit">Show</button>
+    </form>
     <a asp-action="CartIndex" asp-controller="Cart">Show cart</a>
 </div>
 

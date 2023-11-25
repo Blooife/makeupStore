@@ -87,11 +87,13 @@ public class CartController : Controller
     public async Task<IActionResult> CountDec(int CartDetailsId)
     {
         Console.WriteLine(CartDetailsId);
+        ResponseDto? response = await _cartService.DecCartCountAsync(CartDetailsId);
         return RedirectToAction(nameof(CartIndex));
     }
     public async Task<IActionResult> CountInc(int CartDetailsId)
     {
         Console.WriteLine(CartDetailsId);
+        ResponseDto? response = await _cartService.IncCartCountAsync(CartDetailsId);
         return RedirectToAction(nameof(CartIndex));
     }
 }    

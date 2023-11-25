@@ -31,11 +31,30 @@ public class CartService : ICartService
             Url = SD.CartAPIBase + "/api/CartAPI/RemoveCart"
         });
     }
-    
-          
+
+    public async Task<ResponseDto?> IncCartCountAsync(int cartDetailsId)
+    {
+        return await _baseService.SendAsync(new RequestDto()
+        {
+            ApiType = SD.ApiType.POST,
+            Data = cartDetailsId,
+            Url = SD.CartAPIBase + "/api/CartAPI/IncCartCount"
+        });
+    }
+
+    public async Task<ResponseDto?> DecCartCountAsync(int cartDetailsId)
+    {
+        return await _baseService.SendAsync(new RequestDto()
+        {
+            ApiType = SD.ApiType.POST,
+            Data = cartDetailsId,
+            Url = SD.CartAPIBase + "/api/CartAPI/DecCartCount"
+        });
+    }
+
+
     public async Task<ResponseDto?> UpsertCartAsync(CartDto cartDto)
     {
-        Console.WriteLine("CartUpsert cart service");
         return await _baseService.SendAsync(new RequestDto()
         {
             ApiType = SD.ApiType.POST,
