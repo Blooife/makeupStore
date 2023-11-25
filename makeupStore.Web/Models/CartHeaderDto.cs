@@ -15,5 +15,6 @@ namespace makeupStore.Web.Models
         public string? Phone { get; set; }
         [Required]
         public string? Email { get; set; }
+        public string? Address { get; set; }
     }
 }
