@@ -22,6 +22,7 @@ public class CartController : Controller
     public async Task<IActionResult> CartIndex()
     {
         return View(await LoadCartDtoBasedOnLoggedInUser());
+        
     }
     
     private async Task<CartDto> LoadCartDtoBasedOnLoggedInUser()
