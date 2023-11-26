@@ -11,7 +11,6 @@ namespace makeupStore.Services.ProductAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-//[Authorize]
 public class ProductAPIController : ControllerBase
 {
     private readonly IBusControl _bus;
@@ -61,59 +60,7 @@ public class ProductAPIController : ControllerBase
         }
         return response;
     }
-    
-    [HttpGet]
-    [Route("GetByCategory/{category}")]
-    public ResponseDto GetByCategory(string category)
-    {
-        try
-        {
-            IEnumerable<Product> objList = db.Products.Where(u=>u.Category==category).ToList();
-            response.Result = mapper.Map<IEnumerable<ProductDto>>(objList);
-            
-        }
-        catch (Exception e)
-        {
-            response.IsSuccess = false;
-            response.Message = e.Message;
-        }
-        return response;
-    }
-    
-    [HttpGet]
-    [Route("GetSortedMax")]
-    public ResponseDto GetSortedMax()
-    {
-        try
-        {
-            IEnumerable<Product> objList = db.Products.OrderByDescending(u=>u.Price).ToList();
-            response.Result = mapper.Map<IEnumerable<ProductDto>>(objList);
-        }
-        catch (Exception e)
-        {
-            response.IsSuccess = false;
-            response.Message = e.Message;
-        }
-        return response;
-    }
-    
-    [HttpGet]
-    [Route("GetSortedMin")]
-    public ResponseDto GetSortedMin()
-    {
-        try
-        {
-            IEnumerable<Product> objList = db.Products.OrderBy(u=>u.Price).ToList();
-            response.Result = mapper.Map<IEnumerable<ProductDto>>(objList);
-        }
-        catch (Exception e)
-        {
-            response.IsSuccess = false;
-            response.Message = e.Message;
-        }
-        return response;
-    }
-    
+
     private async Task<TOut> GetResponseRabbitTask<TIn, TOut>(TIn request)
         where TIn : class
         where TOut : class

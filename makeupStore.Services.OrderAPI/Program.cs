@@ -80,7 +80,7 @@ builder.Services.AddMassTransit(x =>
 });
 builder.Services.AddMassTransitHostedService();
 
-builder.Logging.ClearProviders();
+//builder.Logging.ClearProviders();
 builder.Host.UseNLog();
 
 var app = builder.Build();

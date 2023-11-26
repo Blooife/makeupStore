@@ -65,6 +65,7 @@ builder.Services.AddMassTransit(x =>
     x.AddConsumer<AddProduct>();
     x.AddConsumer<UpdateProduct>();
     x.AddConsumer<GetProductsForCart>();
+    x.AddConsumer<UpdateProductsCount>();
     x.SetSnakeCaseEndpointNameFormatter();
     x.UsingRabbitMq((context, cfg) =>
     {
@@ -79,6 +80,7 @@ builder.Services.AddMassTransit(x =>
             e.Consumer<AddProduct>(context);
             e.Consumer<UpdateProduct>(context);
             e.Consumer<GetProductsForCart>(context);
+            e.Consumer<UpdateProductsCount>(context);
         });
         cfg.ConfigureJsonSerializer(settings =>
         {

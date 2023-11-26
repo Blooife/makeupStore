@@ -7,6 +7,7 @@ using makeupStore.Services.CartAPI.Models.Dto;
 using makeupStore.Services.MassTransit.Requests;
 using makeupStore.Services.MassTransit.Responses;
 using MassTransit;
+using Microsoft.AspNetCore.Authorization;
 
 namespace makeupStore.Services.CartAPI.Controllers
 {
@@ -25,7 +26,9 @@ namespace makeupStore.Services.CartAPI.Controllers
             _mapper = mapper;
             _bus = bus;
         }
+        
         [HttpGet("GetCart/{userId}")]
+        [Authorize(Roles = "CUSTOMER")]
         public async Task<ResponseDto> GetCart(string userId)
         {
             try
@@ -49,7 +52,7 @@ namespace makeupStore.Services.CartAPI.Controllers
                 cart.CartHeader.CartTotal = 0;
                 foreach (var p in products.Products)
                 {
-                    var c =cart.CartDetails.First(u => u.ProductId == p.ProductId);
+                    var c = cart.CartDetails.First(u => u.ProductId == p.ProductId);
                     c.Product = _mapper.Map<ProductDto>(p);
                     cart.CartHeader.CartTotal += c.Product.Price * c.Count;
                 }
@@ -64,6 +67,7 @@ namespace makeupStore.Services.CartAPI.Controllers
         }
         
         [HttpPost("DecCartCount")]
+        [Authorize(Roles = "CUSTOMER")]
         public async Task<ResponseDto> DecCartCount([FromBody] int cartDetailsId)
         {
             try
@@ -90,6 +94,7 @@ namespace makeupStore.Services.CartAPI.Controllers
         }
         
         [HttpPost("IncCartCount")]
+        [Authorize(Roles = "CUSTOMER")]
         public async Task<ResponseDto> IncCartCount([FromBody] int cartDetailsId)
         {
             try
@@ -117,6 +122,7 @@ namespace makeupStore.Services.CartAPI.Controllers
 
 
         [HttpPost("CartUpsert")]
+        [Authorize(Roles = "CUSTOMER")]
         public async Task<ResponseDto> CartUpsert([FromBody] CartDto cartDto)
         {
             try
@@ -168,11 +174,11 @@ namespace makeupStore.Services.CartAPI.Controllers
         }
         
         [HttpPost("RemoveCart")]
+        [Authorize(Roles = "CUSTOMER")]
         public async Task<ResponseDto> RemoveCart([FromBody]int cartDetailsId)
         {
             try
             {
-                Console.WriteLine("remove");
                 CartDetails cartDetails = _db.CartDetails
                    .First(u => u.CartDetailsId == cartDetailsId);
 

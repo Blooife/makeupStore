@@ -1,11 +1,14 @@
 using AutoMapper;
 using GreenPipes;
 using makeupStore.Services.CartAPI;
+using makeupStore.Services.CartAPI.Consumers;
 using makeupStore.Services.CartAPI.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using makeupStore.Services.CartAPI.Extentions;
+using makeupStore.Services.CartAPI.Services;
+using makeupStore.Services.CartAPI.Services.IServices;
 using MassTransit;
 using Newtonsoft.Json;
 using NLog.Web;
@@ -20,7 +23,7 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
+builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -55,7 +58,7 @@ builder.Services.AddAuthorization();
 
 builder.Services.AddMassTransit(x =>
 {
-    
+    x.AddConsumer<CleanCart>();
     x.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host(new Uri("rabbitmq://localhost"));
@@ -63,6 +66,7 @@ builder.Services.AddMassTransit(x =>
         {
             e.PrefetchCount = 20;
             e.UseMessageRetry(r => r.Interval(2, 100));
+            e.Consumer<CleanCart>(context);
         });
         cfg.ConfigureJsonSerializer(settings =>
         {
@@ -80,7 +84,7 @@ builder.Services.AddMassTransit(x =>
 });
 builder.Services.AddMassTransitHostedService();
 
-builder.Logging.ClearProviders();
+//builder.Logging.ClearProviders();
 builder.Host.UseNLog();
 
 var app = builder.Build();

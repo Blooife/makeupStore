@@ -95,19 +95,23 @@
 
                             @if (User.IsInRole(SD.RoleAdmin))
                             {
-                                @*@if (Model.Status == SD.Status_Approved)
+                                @if (Model.Status == SD.Status_Pending)
                                 {
-                                    <button asp-action="OrderReadyForPickup" asp-route-orderId="@Model.OrderHeaderId" type="submit" class="btn btn-success form-control my-1">Ready for Pickup</button>
+                                    <button asp-action="OrderReadyForDelivery" asp-route-orderId="@Model.OrderHeaderId" type="submit" class="btn btn-success form-control my-1">Order on the way</button>
                                 }
-                                @if (Model.Status == SD.Status_ReadyForPickup)
+                                @if (Model.Status == SD.Status_OnTheWay)
+                                {
+                                    <button asp-action="OrderDelivered" asp-route-orderId="@Model.OrderHeaderId" type="submit" class="btn btn-success form-control my-1">Order delivered</button>
+                                }
+                                @if (Model.Status == SD.Status_Delivered)
                                 {
                                     <button asp-action="CompleteOrder" asp-route-orderId="@Model.OrderHeaderId" type="submit" class="btn btn-success form-control my-1">Complete Order</button>
                                 }
 
-                                if (Model.Status == SD.Status_Approved || Model.Status == SD.Status_ReadyForPickup)
+                                if (Model.Status == SD.Status_Pending || Model.Status == SD.Status_OnTheWay)
                                 {
                                     <button asp-action="CancelOrder" asp-route-orderId="@Model.OrderHeaderId" type="submit" class="btn btn-danger form-control my-1">Cancel Order</button>
-                                }*@
+                                }
                             }
                         </div>
                     </div>

@@ -31,8 +31,16 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(optioins =>
 {
     optioins.ExpireTimeSpan = TimeSpan.FromHours(10);
-    optioins.LoginPath = "/AuthAPI/Login";
-    optioins.AccessDeniedPath = "/AuthAPI/AccessDenied";
+    optioins.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Auth/Login");;
+    optioins.AccessDeniedPath = "/Auth/AccessDenied";
+    /*optioins.Events = new CookieAuthenticationEvents()
+    {
+        OnRedirectToLogin = (context) =>
+        {
+            context.HttpContext.Response.Redirect(SD.AuthAPIBase+"/api/AuthAPI/login");
+            return Task.CompletedTask;
+        }
+    };*/
 });
 
 //builder.Logging.ClearProviders();

@@ -40,7 +40,6 @@ public class ProductController : Controller
             {
                 categoryList.Add(new SelectListItem{Text = c, Value = c});
             }
-            Console.WriteLine(categoryList.First().Value);
             ViewBag.CategoryList = categoryList;
         }
         return list;

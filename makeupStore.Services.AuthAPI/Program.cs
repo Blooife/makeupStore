@@ -23,7 +23,7 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Logging.ClearProviders();
+//builder.Logging.ClearProviders();
 builder.Host.UseNLog();
 
 var app = builder.Build();

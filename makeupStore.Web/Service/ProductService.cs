@@ -30,14 +30,4 @@ public class ProductService : IProductService
             Url = SD.ProductAPIBase + "/api/productAPI/" + id
         });
     }
-
-    public async Task<ResponseDto?> GetByCategoryAsync(string category)
-    {
-        return await _baseService.SendAsync(new RequestDto()
-        {
-            ApiType = SD.ApiType.POST,
-            Data = category,
-            Url = SD.ProductAPIBase + "/api/productAPI/GetByCategory"
-        });
-    }
 }

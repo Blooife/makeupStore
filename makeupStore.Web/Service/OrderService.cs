@@ -41,4 +41,14 @@ public class OrderService : IOrderService
             Url = SD.OrderAPIBase + "/api/OrderAPI/GetOrder/" + id
         });
     }
+    
+    public async Task<ResponseDto?> UpdateOrderStatus(int orderId, string newStatus)
+    {
+        return await _baseService.SendAsync(new RequestDto()
+        {
+            ApiType = SD.ApiType.POST,
+            Data = newStatus,
+            Url = SD.OrderAPIBase + "/api/OrderAPI/UpdateOrderStatus/" + orderId
+        });
+    }
 }

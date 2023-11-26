@@ -6,6 +6,5 @@ public interface IProductService
 {
     Task<ResponseDto?> GetAllProductsAsync();
     Task<ResponseDto?> GetProductByIdAsync(int id);
-    Task<ResponseDto?> GetByCategoryAsync(string category);
     
 }

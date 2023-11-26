@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using makeupStore.Services.MassTransit;
 using makeupStore.Services.OrderAPI.Data;
 using makeupStore.Services.OrderAPI.Models;
 using makeupStore.Services.OrderAPI.Models.Dto;
 using Mango.Services.OrderAPI.Utility;
+using MassTransit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,16 +19,19 @@ namespace makeupStore.Services.OrderAPI.Controllers
         private IMapper _mapper;
         private readonly AppDbContext _db;
         private readonly IConfiguration _configuration;
-        public OrderAPIController(AppDbContext db, IMapper mapper, IConfiguration configuration)
+        private IPublishEndpoint _publishEndpoint;
+        public OrderAPIController(AppDbContext db, IMapper mapper, IConfiguration configuration, IPublishEndpoint publishEndpoint)
         {
             _db = db;
-            this._response = new ResponseDto();
+            _response = new ResponseDto();
             _mapper = mapper;
             _configuration = configuration;
+            _publishEndpoint = publishEndpoint;
         }
 
         //[Authorize]
         [HttpGet("GetOrders")]
+        [Authorize]
         public ResponseDto? Get([FromBody] string? userId = "")
         {
             try
@@ -52,6 +57,7 @@ namespace makeupStore.Services.OrderAPI.Controllers
 
         //[Authorize]
         [HttpGet("GetOrder/{id:int}")]
+        [Authorize]
         public ResponseDto? Get(int id)
         {
             try
@@ -68,6 +74,7 @@ namespace makeupStore.Services.OrderAPI.Controllers
         }
 
         [HttpPost("CreateOrder")]
+        [Authorize]
         public async Task<ResponseDto> CreateOrder([FromBody] CartDto cartDto)
         {
             try
@@ -81,6 +88,26 @@ namespace makeupStore.Services.OrderAPI.Controllers
                 await _db.SaveChangesAsync();
                 orderHeaderDto.OrderHeaderId = orderCreated.OrderHeaderId;
                 _response.Result = orderHeaderDto;
+                await _publishEndpoint.Publish(new CleanCart()
+                {
+                    CartHeaderId = cartDto.CartHeader.CartHeaderId,
+                });
+                var updProducts = new List<ProductDto>();
+                foreach (var item in cartDto.CartDetails)
+                {
+                    updProducts.Add(new ProductDto()
+                    {
+                        ProductId = item.ProductId,
+                        Count = item.Count,
+                    });
+                }
+                if (!updProducts.Equals(null))
+                {
+                    await _publishEndpoint.Publish(new UpdateProductsCount()
+                    {
+                        updatedProducts = updProducts,
+                    });
+                }
             }
             catch (Exception ex)
             {
@@ -90,116 +117,8 @@ namespace makeupStore.Services.OrderAPI.Controllers
             return _response;
         }
 
-
-        /*[Authorize]
-        [HttpPost("CreateStripeSession")]
-        public async Task<ResponseDto> CreateStripeSession([FromBody] StripeRequestDto stripeRequestDto)
-        {
-            try
-            {
-                
-                var options = new SessionCreateOptions
-                {
-                    SuccessUrl = stripeRequestDto.ApprovedUrl,
-                    CancelUrl = stripeRequestDto.CancelUrl,
-                    LineItems = new List<SessionLineItemOptions>(),                     
-                    Mode = "payment",
-                    
-                };
-
-                var DiscountsObj = new List<SessionDiscountOptions>()
-                {
-                    new SessionDiscountOptions
-                    {
-                        Coupon=stripeRequestDto.OrderHeader.CouponCode
-                    }
-                };
-
-                foreach (var item in stripeRequestDto.OrderHeader.OrderDetails)
-                {
-                    var sessionLineItem = new SessionLineItemOptions
-                    {
-                        PriceData = new SessionLineItemPriceDataOptions
-                        {
-                            UnitAmount = (long)(item.Price * 100), // $20.99 -> 2099
-                            Currency = "usd",
-                            ProductData = new SessionLineItemPriceDataProductDataOptions
-                            {
-                                Name = item.Product.Name
-                            }
-                        },
-                        Quantity = item.Count
-                    };
-
-                    options.LineItems.Add(sessionLineItem);
-                }
-
-                if (stripeRequestDto.OrderHeader.Discount > 0)
-                {
-                    options.Discounts = DiscountsObj;
-                }
-                var service = new SessionService();
-                Session session = service.Create(options);
-                stripeRequestDto.StripeSessionUrl = session.Url;
-                OrderHeader orderHeader = _db.OrderHeaders.First(u => u.OrderHeaderId == stripeRequestDto.OrderHeader.OrderHeaderId);
-                orderHeader.StripeSessionId = session.Id;
-                _db.SaveChanges();
-                _response.Result = stripeRequestDto;
-
-            }
-            catch(Exception ex)
-            {
-                _response.Message= ex.Message;
-                _response.IsSuccess = false;
-            }
-            return _response;
-        }
-
-
-        [Authorize]
-        [HttpPost("ValidateStripeSession")]
-        public async Task<ResponseDto> ValidateStripeSession([FromBody] int orderHeaderId)
-        {
-            try
-            {
-
-                OrderHeader orderHeader = _db.OrderHeaders.First(u => u.OrderHeaderId == orderHeaderId);
-
-                var service = new SessionService();
-                Session session = service.Get(orderHeader.StripeSessionId);
-
-                var paymentIntentService = new PaymentIntentService();
-                PaymentIntent paymentIntent = paymentIntentService.Get(session.PaymentIntentId);
-
-                if(paymentIntent.Status== "succeeded")
-                {
-                    //then payment was successful
-                    orderHeader.PaymentIntentId = paymentIntent.Id;
-                    orderHeader.Status = SD.Status_Approved;
-                    _db.SaveChanges();
-                    RewardsDto rewardsDto = new()
-                    {
-                        OrderId = orderHeader.OrderHeaderId,
-                        RewardsActivity = Convert.ToInt32(orderHeader.OrderTotal),
-                        UserId = orderHeader.UserId
-                    };
-                    string topicName = _configuration.GetValue<string>("TopicAndQueueNames:OrderCreatedTopic");
-                    await _messageBus.PublishMessage(rewardsDto,topicName);
-                    _response.Result = _mapper.Map<OrderHeaderDto>(orderHeader);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                _response.Message = ex.Message;
-                _response.IsSuccess = false;
-            }
-            return _response;
-        }*/
-
-
-        /*[Authorize]
         [HttpPost("UpdateOrderStatus/{orderId:int}")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<ResponseDto> UpdateOrderStatus(int orderId, [FromBody] string newStatus)
         {
             try
@@ -207,20 +126,8 @@ namespace makeupStore.Services.OrderAPI.Controllers
                 OrderHeader orderHeader = _db.OrderHeaders.First(u => u.OrderHeaderId == orderId);
                 if (orderHeader != null)
                 {
-                    if(newStatus == SD.Status_Cancelled)
-                    {
-                        //we will give refund
-                        var options = new RefundCreateOptions
-                        {
-                            Reason = RefundReasons.RequestedByCustomer,
-                            PaymentIntent = orderHeader.PaymentIntentId
-                        };
-
-                        var service = new RefundService();
-                        Refund refund = service.Create(options);
-                    }
                     orderHeader.Status = newStatus;
-                    _db.SaveChanges();
+                    await _db.SaveChangesAsync();
                 }
             }
             catch (Exception ex)
@@ -228,6 +135,6 @@ namespace makeupStore.Services.OrderAPI.Controllers
                 _response.IsSuccess = false;
             }
             return _response;
-        }*/
+        }
     }
 }

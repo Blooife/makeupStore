@@ -3,6 +3,7 @@ using GreenPipes;
 using MassTransit;
 using Newtonsoft.Json;
 using makeupStore.Services.StorageAPI;
+using makeupStore.Services.StorageAPI.Extentions;
 using NLog;
 using NLog.Web;
 
@@ -46,7 +47,8 @@ builder.Services.AddMassTransit(x =>
 
 });
 builder.Services.AddMassTransitHostedService();
-
+builder.AddAppAuthentication();
+builder.Services.AddAuthorization();
 builder.Services.AddControllers();
 
 //builder.Logging.ClearProviders();

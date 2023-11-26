@@ -46,6 +46,22 @@ public class ProductService : IProductService
         };
     }
 
+    public async Task UpdateProductsCount(IEnumerable<ProductDto> products)
+    {
+        Console.WriteLine("im in update pr count");
+        foreach (var item in products)
+        {
+            var product = _db.Products.FirstOrDefault(u=>u.ProductId==item.ProductId);
+            if (product != null)
+            {
+                product.Count -= item.Count;
+                _db.Products.Update(product);
+            }
+        }
+
+        await _db.SaveChangesAsync();
+    }
+
     public async Task<BaseResponse> DeleteProduct(int id)
     {
         Product obj = _db.Products.First(u=>u.ProductId==id);

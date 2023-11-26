@@ -22,7 +22,6 @@ public class CartController : Controller
     public async Task<IActionResult> CartIndex()
     {
         return View(await LoadCartDtoBasedOnLoggedInUser());
-        
     }
     
     private async Task<CartDto> LoadCartDtoBasedOnLoggedInUser()
@@ -41,36 +40,26 @@ public class CartController : Controller
     {
         return View(await LoadCartDtoBasedOnLoggedInUser());
     }
+    
     [HttpPost]
     [ActionName("Checkout")]
     public async Task<IActionResult> Checkout(CartDto cartDto)
     {
         CartDto cart = await LoadCartDtoBasedOnLoggedInUser();
+        foreach (var item in cart.CartDetails)
+        {
+            if (item.Product.Count < item.Count)
+            {
+                ///////сообщение что на складе не хватает товара
+                return RedirectToAction(nameof(CartIndex));
+            }
+        }
         cart.CartHeader.Phone = cartDto.CartHeader.Phone;
         cart.CartHeader.Email = cartDto.CartHeader.Email;
         cart.CartHeader.Name = cartDto.CartHeader.Name;
         var response = await _orderService.CreateOrderAsync(cart);
         OrderHeaderDto orderHeaderDto = JsonConvert.DeserializeObject<OrderHeaderDto>(Convert.ToString(response.Result));
 
-        if (response != null && response.IsSuccess)
-        {
-            //get stripe session and redirect to stripe to place order
-            //
-            var domain = Request.Scheme + "://" + Request.Host.Value + "/";
-
-            /*StripeRequestDto stripeRequestDto = new()
-            {
-                ApprovedUrl = domain + "cart/Confirmation?orderId=" + orderHeaderDto.OrderHeaderId,
-                CancelUrl = domain + "cart/checkout",
-                OrderHeader = orderHeaderDto
-            };
-
-            var stripeResponse = await _orderService.CreateStripeSession(stripeRequestDto);
-            StripeRequestDto stripeResponseResult = JsonConvert.DeserializeObject<StripeRequestDto>
-                (Convert.ToString(stripeResponse.Result));#2#
-            //Response.Headers.Add("Location", stripeResponseResult.StripeSessionUrl);*/
-            return new StatusCodeResult(303);
-        }
         return RedirectToAction(nameof(CartIndex));
     }
     

@@ -63,25 +63,68 @@ public class OrderController : Controller
         if (response != null && response.IsSuccess)
         {
             list = JsonConvert.DeserializeObject<List<OrderHeaderDto>>(Convert.ToString(response.Result));
-            switch (status)
-            {
-                case "approved":
-                    list = list.Where(u => u.Status == SD.Status_Approved);
-                    break;
-                case "readyforpickup":
-                    list = list.Where(u => u.Status == SD.Status_ReadyForPickup);
-                    break;
-                case "cancelled":
-                    list = list.Where(u => u.Status == SD.Status_Cancelled || u.Status == SD.Status_Refunded);
-                    break;
-                default:
-                    break;
-            }
+            
         }
         else
         {
             list = new List<OrderHeaderDto>();
         }
         return Json(new { data = list.OrderByDescending(u=>u.OrderHeaderId) });
+    }
+    
+    [HttpPost("OrderReadyForDelivery")]
+    public async Task<IActionResult> OrderReadyForDelivery(int orderId)
+    {
+        var response = await _orderService.UpdateOrderStatus(orderId,SD.Status_OnTheWay);
+        var responseDto = await _orderService.GetOrderByIdAsync(orderId);
+        OrderHeaderDto order = JsonConvert.DeserializeObject<OrderHeaderDto>(Convert.ToString(responseDto.Result));
+        if (response != null && response.IsSuccess)
+        {
+            TempData["success"] = "Status updated successfully";
+            return View("OrderDetail", order);
+        }
+        return View("OrderDetail", order);
+    }
+    
+    [HttpPost("OrderDelivered")]
+    public async Task<IActionResult> OrderDelivered(int orderId)
+    {
+        var response = await _orderService.UpdateOrderStatus(orderId,SD.Status_Delivered);
+        var responseDto = await _orderService.GetOrderByIdAsync(orderId);
+        OrderHeaderDto order = JsonConvert.DeserializeObject<OrderHeaderDto>(Convert.ToString(responseDto.Result));
+        if (response != null && response.IsSuccess)
+        {
+            TempData["success"] = "Status updated successfully";
+            return View("OrderDetail", order);
+        }
+        return View("OrderDetail", order);
+    }
+
+    [HttpPost("CompleteOrder")]
+    public async Task<IActionResult> CompleteOrder(int orderId)
+    {
+        var response = await _orderService.UpdateOrderStatus(orderId, SD.Status_Taken);
+        var responseDto = await _orderService.GetOrderByIdAsync(orderId);
+        OrderHeaderDto order = JsonConvert.DeserializeObject<OrderHeaderDto>(Convert.ToString(responseDto.Result));
+        if (response != null && response.IsSuccess)
+        {
+            TempData["success"] = "Status updated successfully";
+            return View("OrderDetail", order);
+        }
+        return View("OrderDetail", order);
+    }
+    
+    [HttpPost("CancelOrder")]
+    public async Task<IActionResult> CancelOrder(int orderId)
+    {
+        var response = await _orderService.UpdateOrderStatus(orderId, SD.Status_Cancelled);
+        var responseDto = await _orderService.GetOrderByIdAsync(orderId);
+        OrderHeaderDto order = JsonConvert.DeserializeObject<OrderHeaderDto>(Convert.ToString(responseDto.Result));
+        if (response != null && response.IsSuccess)
+        {
+            TempData["success"] = "Status updated successfully";
+            return RedirectToAction(nameof(OrderDetail), new { orderId = orderId });
+        }
+        return View("OrderDetail", order);
     }
 }    

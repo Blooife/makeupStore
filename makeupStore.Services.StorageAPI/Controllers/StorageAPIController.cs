@@ -4,6 +4,7 @@ using makeupStore.Services.MassTransit.Responses;
 using makeupStore.Services.StorageAPI.Models;
 using makeupStore.Services.StorageAPI.Models.Dto;
 using MassTransit;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -12,6 +13,7 @@ namespace makeupStore.Services.StorageAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+
 public class StorageAPIController : ControllerBase
 {
     private readonly IBusControl _busControl;
@@ -27,10 +29,11 @@ public class StorageAPIController : ControllerBase
     }
     
     [HttpGet]
+    [Authorize(Roles = "ADMIN")]
     public async Task<IActionResult> GetAllProducts()
     {
         try
-        {
+        {   
             var response = await GetResponseRabbitTask<GetAllProductsRequest, GetAllProductsResponse>(new GetAllProductsRequest());
             IEnumerable<Product> objList = response.Products;
             responseDto.Result = _mapper.Map<IEnumerable<ProductDto>>(objList);
@@ -46,6 +49,7 @@ public class StorageAPIController : ControllerBase
     
     [HttpGet]
     [Route("{id:int}")]
+    [Authorize(Roles = "ADMIN")]
     public async Task<IActionResult> GetProductById(int id)
     {
         try
@@ -66,6 +70,7 @@ public class StorageAPIController : ControllerBase
     }
     
     [HttpPost]
+    [Authorize(Roles = "ADMIN")]
     public async Task<IActionResult> AddProduct([FromBody] ProductDto productDto)
     {
         try
@@ -87,7 +92,7 @@ public class StorageAPIController : ControllerBase
     }
     
     [HttpPut]
-    //[Authorize(Roles = "ADMIN")]
+    [Authorize(Roles = "ADMIN")]
     public async Task<IActionResult> UpdateProduct([FromBody] ProductDto productDto)
     {
         try
@@ -108,7 +113,7 @@ public class StorageAPIController : ControllerBase
 
     [HttpDelete]
     [Route("{id:int}")]
-    //[Authorize(Roles = "ADMIN")]
+    [Authorize(Roles = "ADMIN")]
     public async Task<IActionResult> Delete(int id)
     {
         try

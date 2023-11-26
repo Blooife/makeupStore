@@ -7,4 +7,5 @@ public interface IOrderService
     public Task<ResponseDto?> GetOrdersByUserIdAsync(string userId);
     public Task<ResponseDto?> CreateOrderAsync(CartDto cartDto);
     public Task<ResponseDto?> GetOrderByIdAsync(int id);
+    public Task<ResponseDto?> UpdateOrderStatus(int orderId, string newStatus);
 }
