@@ -9,7 +9,13 @@ public class AppDbContext : DbContext
     {
         
     }
-    public DbSet<Product> Products { get; set; }
+
+    public AppDbContext()
+    {
+        
+    }
+
+    public virtual DbSet<Product> Products { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
