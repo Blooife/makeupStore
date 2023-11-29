@@ -3,7 +3,6 @@ using makeupStore.Services.AuthAPI.Data;
 using makeupStore.Services.AuthAPI.Models;
 using makeupStore.Services.AuthAPI.Service;
 using makeupStore.Services.AuthAPI.Service.IService;
-using Mango.Services.AuthAPI.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using NLog.Web;

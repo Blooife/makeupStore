@@ -13,6 +13,7 @@ namespace makeupStore.Services.CartAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CartAPIController : ControllerBase
     {
         private readonly IBusControl _bus;
@@ -37,8 +38,9 @@ namespace makeupStore.Services.CartAPI.Controllers
                 {
                     CartHeader = _mapper.Map<CartHeaderDto>(_db.CartHeaders.First(u => u.UserId == userId))
                 };
-                cart.CartDetails = _mapper.Map<IEnumerable<CartDetailsDto>>(_db.CartDetails.Where(
-                    u => u.CartHeaderId == cart.CartHeader.CartHeaderId));
+                var d = _db.CartDetails.Where(
+                    u => u.CartHeaderId == cart.CartHeader.CartHeaderId);
+                cart.CartDetails = _mapper.Map<IEnumerable<CartDetailsDto>>(d.ToList());
                 List<int> prIds = new List<int>();
                 foreach (var item in cart.CartDetails)
                 {
@@ -188,7 +190,6 @@ namespace makeupStore.Services.CartAPI.Controllers
                 {
                     var cartHeaderToRemove = await _db.CartHeaders
                        .FirstOrDefaultAsync(u => u.CartHeaderId == cartDetails.CartHeaderId);
-
                     _db.CartHeaders.Remove(cartHeaderToRemove);
                 }
                 await _db.SaveChangesAsync();

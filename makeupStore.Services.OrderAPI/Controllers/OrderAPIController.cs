@@ -13,23 +13,22 @@ namespace makeupStore.Services.OrderAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class OrderAPIController : ControllerBase
     {
         protected ResponseDto _response;
         private IMapper _mapper;
         private readonly AppDbContext _db;
-        private readonly IConfiguration _configuration;
         private IPublishEndpoint _publishEndpoint;
-        public OrderAPIController(AppDbContext db, IMapper mapper, IConfiguration configuration, IPublishEndpoint publishEndpoint)
+        public OrderAPIController(AppDbContext db, IMapper mapper, IPublishEndpoint publishEndpoint)
         {
             _db = db;
             _response = new ResponseDto();
             _mapper = mapper;
-            _configuration = configuration;
             _publishEndpoint = publishEndpoint;
         }
 
-        //[Authorize]
+        
         [HttpGet("GetOrders")]
         [Authorize]
         public ResponseDto? Get([FromBody] string? userId = "")
@@ -55,7 +54,7 @@ namespace makeupStore.Services.OrderAPI.Controllers
             return _response;
         }
 
-        //[Authorize]
+        
         [HttpGet("GetOrder/{id:int}")]
         [Authorize]
         public ResponseDto? Get(int id)

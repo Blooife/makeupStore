@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  rabbit:
+    hostname: rabbit
+    image: rabbitmq:3.6.1-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+  db:
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    environment:
+      SA_PASSWORD: "passwordMy123"
+      ACCEPT_EULA: "Y"
+  orderapi:
+    image: orderapi
+    build:
+      context: .
+      dockerfile: makeupStore.Services.OrderAPI
+    ports:
+      - 7005:7005
+    depends_on:
+      - db

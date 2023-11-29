@@ -13,6 +13,7 @@ namespace makeupStore.Services.StorageAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 
 public class StorageAPIController : ControllerBase
 {
@@ -75,12 +76,11 @@ public class StorageAPIController : ControllerBase
     {
         try
         {
-            Console.WriteLine("Im in storage Add product");
-            Console.WriteLine(productDto.ToString());
             var response = await GetResponseRabbitTask<AddProductRequest, BaseResponse>(new AddProductRequest()
             {
                 product = _mapper.Map<ProductDto,Product>(productDto),
             });
+            responseDto.Result = response;
             return Ok(responseDto);
         }
         catch (Exception e)
@@ -101,6 +101,7 @@ public class StorageAPIController : ControllerBase
             {
                 product = _mapper.Map<ProductDto,Product>(productDto),
             });
+            responseDto.Result = response;
             return Ok(responseDto);
         }
         catch (Exception ex)

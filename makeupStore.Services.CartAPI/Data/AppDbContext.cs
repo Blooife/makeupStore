@@ -10,8 +10,13 @@ namespace makeupStore.Services.CartAPI.Data
         {
         }
 
-        public DbSet<CartHeader> CartHeaders { get; set; }
-        public DbSet<CartDetails> CartDetails { get; set; }
+        public AppDbContext()
+        {
+            
+        }
+        
+        public virtual DbSet<CartHeader> CartHeaders { get; set; }
+        public virtual DbSet<CartDetails> CartDetails { get; set; }
      
     }
 }

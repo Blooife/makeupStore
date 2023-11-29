@@ -10,8 +10,13 @@ namespace makeupStore.Services.OrderAPI.Data
         {
         }
 
-        public DbSet<OrderHeader> OrderHeaders { get; set; }
-        public DbSet<OrderDetails> OrderDetails { get; set; }
+        public AppDbContext()
+        {
+            
+        }
+        
+        public virtual DbSet<OrderHeader> OrderHeaders { get; set; }
+        public virtual DbSet<OrderDetails> OrderDetails { get; set; }
      
     }
 }

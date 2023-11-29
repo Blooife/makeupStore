@@ -12,7 +12,7 @@ public class TestHelpers
             {
                 ProductId = 0,
                 Name = "John Doe",
-                Category = "",
+                Category = "lipstick",
                 Count = 5,
                 Description = "",
                 ImageUrl = "df",
@@ -22,7 +22,7 @@ public class TestHelpers
             {
                 ProductId = 1,
                 Name = "John",
-                Category = "",
+                Category = "lipstick",
                 Count = 5,
                 Description = "",
                 ImageUrl = "df",

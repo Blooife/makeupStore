@@ -3,9 +3,7 @@ using makeupStore.Services.ProductAPI.Data;
 using makeupStore.Services.ProductAPI.Models;
 using makeupStore.Services.ProductAPI.Models.Dto;
 using MassTransit;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace makeupStore.Services.ProductAPI.Controllers;
 

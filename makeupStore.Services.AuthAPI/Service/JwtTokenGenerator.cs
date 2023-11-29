@@ -3,7 +3,6 @@ using System.Security.Claims;
 using System.Text;
 using makeupStore.Services.AuthAPI.Models;
 using makeupStore.Services.AuthAPI.Service.IService;
-using Mango.Services.AuthAPI.Models;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
