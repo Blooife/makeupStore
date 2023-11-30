@@ -2,10 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{FBF3B681-8286-47DA-A669-B7C2A7417332}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{39947D48-E70F-40E1-9E8F-15522A5D2E64}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Intagration", "Intagration", "{37A0EE36-203A-4186-934F-DDCCBA5AFB36}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{095F9175-BCF8-4773-AFF2-EAA531F0BF5C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "makeupStore.Web", "makeupStore.Web\makeupStore.Web.csproj", "{07154792-37B0-4755-9049-78F23DC594EF}"
